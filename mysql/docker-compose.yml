@@ -54,7 +54,7 @@ services:
       - "./config/cygnus/cygnus.conf:/opt/apache-flume/conf/agent.conf:rw"
     links:
       - orion
-      - postgres
+      - mysql
     expose:
       - "5050"
       - "8081"
