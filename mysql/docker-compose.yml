@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 networks:
   fiware:
@@ -6,14 +6,16 @@ networks:
 
 services:
   mongodb:
-    image: mongo:3.4
+    image: mongo:3.4.2
     hostname: mongodb
     container_name: mongodb
     ports:
       - "27017:27017"
     expose:
       - "27017"
-    command: --smallfiles
+    volumes:
+      - mongodb-volume:/data
+    command: mongod --smallfiles
     networks:
       - fiware
 
@@ -31,30 +33,15 @@ services:
     networks:
       - fiware
 
-  mysql:
-    image: mysql:5.5
-    hostname: mysql
-    container_name: mysql
-    expose:
-        - "3306"
-    ports:
-        - "3306:3306"
-    volumes:
-        - "./data/mysql:/var/lib/mysql/data:rw"
-    environment:
-        - MYSQL_ROOT_PASSWORD=mysql
-    networks:
-      - fiware
-
   cygnus:
     image: fiware/cygnus-ngsi:latest
     hostname: cygnus
     container_name: cygnus
     volumes:
-      - "./config/cygnus/cygnus.conf:/opt/apache-flume/conf/agent.conf:rw"
+      - "./config/cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
     links:
       - orion
-      - mysql
+      - mysql-cygnus
     expose:
       - "5050"
       - "8081"
@@ -62,18 +49,29 @@ services:
       - "5050:5050"
       - "8081:8081"
     environment:
-      - CYGNUS_MYSQL_HOST=iot-mysql        
+      - CYGNUS_MYSQL_HOST=mysql-cygnus
+      - CYGNUS_MYSQL_PORT=3306
       - CYGNUS_MYSQL_USER=root
       - CYGNUS_MYSQL_PASS=mysql
-      - CYGNUS_MYSQL_PORT=3306
+      - CYGNUS_LOG_LEVEL=INFO
     networks:
       - fiware
 
-  grafana:
-    image: grafana/grafana
-    links:
-        - mysql
+  mysql-cygnus:
+    image: mysql
+    hostname: mysql-cygnus
+    container_name: mysql-cygnus
     expose:
-        - "3000"
+      - "3306"
     ports:
-        - "3000:3000"
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=YOUR_MYSQL_ROOT_PASSWORD
+    volumes:
+      - mysql-cygnus-volume:/var/lib/mysql
+    networks:
+      - fiware
+
+volumes:
+  mongodb-volume:
+  mysql-cygnus-volume:
