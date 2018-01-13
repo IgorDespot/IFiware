@@ -1,0 +1,204 @@
+rios@asus:~/Documents/Servidor$ sudo docker-compose up
+[sudo] password for rios: 
+Pulling mysql-cygnus (mysql:latest)...
+latest: Pulling from library/mysql
+f49cf87b52c1: Pull complete
+78032de49d65: Pull complete
+837546b20bc4: Pull complete
+9b8316af6cc6: Pull complete
+1056cf29b9f1: Pull complete
+86f3913b029a: Pull complete
+4cbbfc9aebab: Pull complete
+8ffd0352f6a8: Pull complete
+45d90f823f97: Pull complete
+ca2a791aeb35: Pull complete
+Digest: sha256:1f95a2ba07ea2ee2800ec8ce3b5370ed4754b0a71d9d11c0c35c934e9708dcf1
+Status: Downloaded newer image for mysql:latest
+Pulling mongodb (mongo:3.4.2)...
+3.4.2: Pulling from library/mongo
+e45e882ed798: Pull complete
+b03f96593290: Pull complete
+90df9ef9b571: Pull complete
+a647e09745f6: Pull complete
+b394c03fdf0b: Pull complete
+081d72a1938b: Pull complete
+fee529278709: Pull complete
+29c9f4827f3d: Pull complete
+56ce0b7433f1: Pull complete
+8a23c7b7039e: Pull complete
+7405cad42469: Pull complete
+Digest: sha256:8fa9ae74c30020bfb193e9abb327e92c3920af70e72a114da4373c4cd868fbd5
+Status: Downloaded newer image for mongo:3.4.2
+Pulling orion (fiware/orion:latest)...
+latest: Pulling from fiware/orion
+f9f73d801f05: Pull complete
+4575e3303d56: Pull complete
+Digest: sha256:629a77f860caeadecb3b5434313b449a4b8239f9c1de101f562e003e9d7e5ba0
+Status: Downloaded newer image for fiware/orion:latest
+Pulling cygnus (fiware/cygnus-ngsi:latest)...
+latest: Pulling from fiware/cygnus-ngsi
+b26de5a391ad: Pull complete
+71be9c591fa8: Pull complete
+Creating mongodb ... done
+Creating orion ... done
+Creating cygnus ... done
+Creating mysql-cygnus ... 
+Creating orion ... 
+Creating cygnus ... 
+Attaching to mysql-cygnus, mongodb, orion, cygnus
+mysql-cygnus    | 2018-01-13T02:28:40.388257Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+mysql-cygnus    | 2018-01-13T02:28:40.389299Z 0 [Note] mysqld (mysqld 5.7.20) starting as process 1 ...
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=mongodb
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] db version v3.4.2
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] git version: 3f76e40c105fc223b3e5aac3e20dcd026b83b38b
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1t  3 May 2016
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+mysql-cygnus    | 2018-01-13T02:28:40.391838Z 0 [Note] InnoDB: PUNCH HOLE support available
+mysql-cygnus    | 2018-01-13T02:28:40.391877Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql-cygnus    | 2018-01-13T02:28:40.391884Z 0 [Note] InnoDB: Uses event mutexes
+orion           | time=Saturday 13 Jan 02:28:43 2018.716Z | lvl=ERROR | corr=N/A | trans=N/A | from=N/A | srv=N/A | subsrv=N/A | comp=Orion | op=mongoConnectionPool.cpp[152]:mongoConnect | msg=Database Startup Error (cannot connect to mongo - doing 100 retries with a 1000 microsecond interval)
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] modules: none
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] build environment:
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten]     distmod: debian81
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten]     distarch: x86_64
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+mysql-cygnus    | 2018-01-13T02:28:40.391888Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+mongodb         | 2018-01-13T02:28:40.275+0000 I CONTROL  [initandlisten] options: { storage: { mmapv1: { smallFiles: true } } }
+mysql-cygnus    | 2018-01-13T02:28:40.391892Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+mysql-cygnus    | 2018-01-13T02:28:40.391896Z 0 [Note] InnoDB: Using Linux native AIO
+mongodb         | 2018-01-13T02:28:40.278+0000 I STORAGE  [initandlisten] 
+mysql-cygnus    | 2018-01-13T02:28:40.392133Z 0 [Note] InnoDB: Number of pools: 1
+mongodb         | 2018-01-13T02:28:40.278+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+mongodb         | 2018-01-13T02:28:40.278+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+mysql-cygnus    | 2018-01-13T02:28:40.392273Z 0 [Note] InnoDB: Using CPU crc32 instructions
+mysql-cygnus    | 2018-01-13T02:28:40.393955Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+mongodb         | 2018-01-13T02:28:40.278+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3433M,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+mongodb         | 2018-01-13T02:28:43.222+0000 W STORAGE  [initandlisten] Detected configuration for non-active storage engine mmapv1 when current storage engine is wiredTiger
+mysql-cygnus    | 2018-01-13T02:28:40.401201Z 0 [Note] InnoDB: Completed initialization of buffer pool
+mongodb         | 2018-01-13T02:28:43.222+0000 I CONTROL  [initandlisten] 
+mongodb         | 2018-01-13T02:28:43.222+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+mongodb         | 2018-01-13T02:28:43.222+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+mongodb         | 2018-01-13T02:28:43.222+0000 I CONTROL  [initandlisten] 
+mysql-cygnus    | 2018-01-13T02:28:40.402634Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+mongodb         | 2018-01-13T02:28:43.667+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+mysql-cygnus    | 2018-01-13T02:28:40.414662Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+mongodb         | 2018-01-13T02:28:44.474+0000 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+mongodb         | 2018-01-13T02:28:44.474+0000 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+mysql-cygnus    | 2018-01-13T02:28:40.514008Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+mongodb         | 2018-01-13T02:28:44.502+0000 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+mysql-cygnus    | 2018-01-13T02:28:40.514167Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+mysql-cygnus    | 2018-01-13T02:28:40.797238Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+mongodb         | 2018-01-13T02:28:44.502+0000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+mysql-cygnus    | 2018-01-13T02:28:40.798524Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+mysql-cygnus    | 2018-01-13T02:28:40.798577Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+mongodb         | 2018-01-13T02:28:44.502+0000 I NETWORK  [thread1] waiting for connections on port 27017
+mysql-cygnus    | 2018-01-13T02:28:40.799104Z 0 [Note] InnoDB: 5.7.20 started; log sequence number 12157274
+mysql-cygnus    | 2018-01-13T02:28:40.799289Z 0 [Note] Plugin 'FEDERATED' is disabled.
+mongodb         | 2018-01-13T02:28:44.716+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39246 #1 (1 connection now open)
+mongodb         | 2018-01-13T02:28:44.720+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39248 #2 (2 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.799952Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+mysql-cygnus    | 2018-01-13T02:28:40.805188Z 0 [Note] InnoDB: Buffer pool(s) load completed at 180113  2:28:40
+mongodb         | 2018-01-13T02:28:44.720+0000 I -        [conn1] end connection 172.19.0.4:39246 (2 connections now open)
+mongodb         | 2018-01-13T02:28:44.722+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39250 #3 (2 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.805695Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+mongodb         | 2018-01-13T02:28:44.723+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39252 #4 (3 connections now open)
+mongodb         | 2018-01-13T02:28:44.723+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39254 #5 (4 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.805831Z 0 [Warning] CA certificate ca.pem is self signed.
+mongodb         | 2018-01-13T02:28:44.725+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39256 #6 (5 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.807119Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+mysql-cygnus    | 2018-01-13T02:28:40.807141Z 0 [Note] IPv6 is available.
+mysql-cygnus    | 2018-01-13T02:28:40.807149Z 0 [Note]   - '::' resolves to '::';
+mysql-cygnus    | 2018-01-13T02:28:40.807163Z 0 [Note] Server socket created on IP: '::'.
+mongodb         | 2018-01-13T02:28:44.725+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39258 #7 (6 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.910815Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+mongodb         | 2018-01-13T02:28:44.726+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39260 #8 (7 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:40.910840Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+mysql-cygnus    | 2018-01-13T02:28:40.910848Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+mysql-cygnus    | 2018-01-13T02:28:40.910863Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+mysql-cygnus    | 2018-01-13T02:28:40.910868Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+mysql-cygnus    | 2018-01-13T02:28:40.910876Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+mongodb         | 2018-01-13T02:28:44.727+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39262 #9 (8 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:41.025040Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+mongodb         | 2018-01-13T02:28:44.728+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39264 #10 (9 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:41.025059Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+mongodb         | 2018-01-13T02:28:44.729+0000 I NETWORK  [thread1] connection accepted from 172.19.0.4:39266 #11 (10 connections now open)
+mysql-cygnus    | 2018-01-13T02:28:41.028543Z 0 [Note] Event Scheduler: Loaded 0 events
+mongodb         | 2018-01-13T02:28:45.578+0000 I INDEX    [conn2] build index on: orion.entities properties: { v: 2, key: { location.coords: "2dsphere" }, name: "location.coords_2dsphere", ns: "orion.entities", 2dsphereIndexVersion: 3 }
+mongodb         | 2018-01-13T02:28:45.578+0000 I INDEX    [conn2] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+mysql-cygnus    | 2018-01-13T02:28:41.028674Z 0 [Note] mysqld: ready for connections.
+mysql-cygnus    | Version: '5.7.20'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+mongodb         | 2018-01-13T02:28:45.610+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+mysql-cygnus    | 2018-01-13T02:28:41.028683Z 0 [Note] Executing 'SELECT * FROM INFORMATION_SCHEMA.TABLES;' to get a list of tables using the deprecated partition engine. You may use the startup option '--disable-partition-engine-check' to skip this check. 
+mysql-cygnus    | 2018-01-13T02:28:41.028686Z 0 [Note] Beginning of list of non-natively partitioned tables
+mongodb         | 2018-01-13T02:28:45.610+0000 I COMMAND  [conn2] command orion.$cmd command: createIndexes { createIndexes: "entities", indexes: [ { name: "location.coords_2dsphere", key: { location.coords: "2dsphere" } } ] } numYields:0 reslen:113 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 881ms
+mysql-cygnus    | 2018-01-13T02:28:41.035337Z 0 [Note] End of list of non-natively partitioned tables
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedAosmRW: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedJx3kEW: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sed9xTqIW: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedyw2xnV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedGXburV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedEd5rdV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sed4C2tjV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sed1P353U: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedcMiaXU: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedhCdAXV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedoZ5b4V: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedTGL9NV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sed6vYyHV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedn5gvKV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedY0BEzV: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedHKT1XY: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedWZFUCY: Device or resource busy
+cygnus          | sed: cannot rename /opt/apache-flume/conf/sedJiiwHY: Device or resource busy
+cygnus          | Warning: JAVA_HOME is not set!
+cygnus          | + exec /usr/bin/java -Xmx20m -Dflume.root.logger=INFO,console -Duser.timezone=UTC -Dfile.encoding=UTF-8 -cp '/opt/apache-flume/conf:/opt/apache-flume/lib/*:/opt/apache-flume/plugins.d/cygnus/lib/*:/opt/apache-flume/plugins.d/cygnus/libext/*' -Djava.library.path= com.telefonica.iot.cygnus.nodes.CygnusApplication -f /opt/apache-flume/conf/agent.conf -n cygnus-ngsi -p 8081
+cygnus          | SLF4J: Class path contains multiple SLF4J bindings.
+cygnus          | SLF4J: Found binding in [jar:file:/opt/apache-flume/lib/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus          | SLF4J: Found binding in [jar:file:/opt/apache-flume/plugins.d/cygnus/lib/cygnus-ngsi-1.8.0_SNAPSHOT-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus          | SLF4J: Found binding in [jar:file:/opt/apache-flume/plugins.d/cygnus/libext/cygnus-common-1.8.0_SNAPSHOT-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus          | SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+cygnus          | time=2018-01-13T02:29:05.482Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=N/A | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[171] : Starting Cygnus, version 1.8.0_SNAPSHOT.3f677284750cd601756a67a72a20267090efdff8
+cygnus          | time=2018-01-13T02:29:05.592Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[303] : Waiting for valid Flume components references...
+cygnus          | time=2018-01-13T02:29:05.593Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.node.PollingPropertiesFileConfigurationProvider[61] : Configuration provider starting
+cygnus          | time=2018-01-13T02:29:05.595Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=run | msg=org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable[133] : Reloading configuration file:/opt/apache-flume/conf/agent.conf
+cygnus          | time=2018-01-13T02:29:05.605Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.605Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.606Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.606Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.606Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.607Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.607Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.607Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.608Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.608Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.608Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.609Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.612Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.612Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.613Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.613Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[930] : Added sinks: mysql-sink Agent: cygnus-ngsi
+cygnus          | time=2018-01-13T02:29:05.613Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus          | time=2018-01-13T02:29:05.624Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=validateConfiguration | msg=org.apache.flume.conf.FlumeConfiguration[140] : Post-validation flume configuration contains configuration for agents: [cygnus-ngsi]
+cygnus          | time=2018-01-13T02:29:05.625Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[150] : Creating channels
+cygnus          | time=2018-01-13T02:29:05.635Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel mysql-channel type memory
+cygnus          | time=2018-01-13T02:29:05.639Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel mysql-channel
+cygnus          | time=2018-01-13T02:29:05.640Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.source.DefaultSourceFactory[39] : Creating instance of source http-source, type org.apache.flume.source.http.HTTPSource
+cygnus          | time=2018-01-13T02:29:05.660Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=configure | msg=com.telefonica.iot.cygnus.handlers.NGSIRestHandler[157] : [NGSIRestHandler] Startup completed
+cygnus          | time=2018-01-13T02:29:05.670Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: mysql-sink, type: com.telefonica.iot.cygnus.sinks.NGSIMySQLSink
+cygnus          | time=2018-01-13T02:29:05.682Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel mysql-channel connected to [http-source, mysql-sink]
+cygnus          | time=2018-01-13T02:29:05.686Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[138] : Starting new configuration:{ sourceRunners:{http-source=EventDrivenSourceRunner: { source:org.apache.flume.source.http.HTTPSource{name:http-source,state:IDLE} }} sinkRunners:{mysql-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@7367cb55 counterGroup:{ name:null counters:{} } }} channels:{mysql-channel=org.apache.flume.channel.MemoryChannel{name: mysql-channel}} }
+cygnus          | time=2018-01-13T02:29:05.687Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel mysql-channel
+cygnus          | time=2018-01-13T02:29:05.728Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: mysql-channel, registered successfully.
+cygnus          | time=2018-01-13T02:29:05.728Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: mysql-channel started
+cygnus          | time=2018-01-13T02:29:05.729Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink mysql-sink
+cygnus          | time=2018-01-13T02:29:05.729Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[184] : Starting Source http-source
+cygnus          | time=2018-01-13T02:29:05.731Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[53] : Grouping rules read: 
+cygnus          | time=2018-01-13T02:29:05.734Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [mysql-sink] Startup completed
+cygnus          | time=2018-01-13T02:29:05.736Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[61] : Grouping rules syntax has errors. Details: null
+cygnus          | time=2018-01-13T02:29:05.740Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[53] : Grouping rules read: 
+cygnus          | time=2018-01-13T02:29:05.740Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[61] : Grouping rules syntax has errors. Details: null
+cygnus          | time=2018-01-13T02:29:05.818Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: SOURCE, name: http-source, registered successfully.
+cygnus          | time=2018-01-13T02:29:05.818Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: SOURCE, name: http-source started
+cygnus          | time=2018-01-13T02:29:06.593Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[315] : Starting a Jetty server listening on 0.0.0.0:8081 (Management Interface)
+
+
