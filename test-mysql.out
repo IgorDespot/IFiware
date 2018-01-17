@@ -1,0 +1,485 @@
+rios@asus:~/Documents/Fiware$ sudo docker-compose up
+[sudo] password for rios: 
+Pulling mongodb (mongo:3.4)...
+3.4: Pulling from library/mongo
+c4bb02b17bb4: Pull complete
+3f58e3bb3be4: Pull complete
+a229fb575a6e: Pull complete
+8f5ddc533743: Pull complete
+5e9d2af6e206: Pull complete
+8b17a0553222: Pull complete
+1723351cb8b4: Pull complete
+78dd8437755a: Pull complete
+61012c043572: Pull complete
+76aeb242d479: Pull complete
+bdc8171e92f4: Pull complete
+Digest: sha256:b84baeffd0f14bebaf057b36de9414ee41584a897351795f4a3889257cf19b6d
+Status: Downloaded newer image for mongo:3.4
+Pulling orion (fiware/orion:latest)...
+latest: Pulling from fiware/orion
+f9f73d801f05: Pull complete
+c74eaf0e5169: Pull complete
+Digest: sha256:18ea52125f97f220ac943922a08c04512a7ba869adf69cabd92dc1cd553eb64e
+Status: Downloaded newer image for fiware/orion:latest
+Pulling mysql (mysql:5.5)...
+5.5: Pulling from library/mysql
+f49cf87b52c1: Pull complete
+78032de49d65: Pull complete
+837546b20bc4: Pull complete
+9b8316af6cc6: Pull complete
+49b5a0115c5a: Pull complete
+5a4b0da7a8b4: Pull complete
+528291820139: Pull complete
+4e249b5e7030: Pull complete
+9266fe0a861a: Pull complete
+11b3cc095887: Pull complete
+55d467c834eb: Pull complete
+Digest: sha256:4e544380148766a323715122491a782dc87cfca0078a2719a1c90294094bf4e2
+Status: Downloaded newer image for mysql:5.5
+Pulling cygnus (fiware/cygnus-ngsi:latest)...
+latest: Pulling from fiware/cygnus-ngsi
+b26de5a391ad: Pull complete
+71be9c591fa8: Pull complete
+Digest: sha256:f81562062cfc7426cf8bfced7fbaaa1d91814f77b18198c2ea73ab26dc520a94
+Status: Downloaded newer image for fiware/cygnus-ngsi:latest
+Pulling grafana (grafana/grafana:latest)...
+latest: Pulling from grafana/grafana
+c6b13209f43b: Already exists
+a3ed95caeb02: Pull complete
+051738ac6f7e: Pull complete
+Creating mysql ... done
+Creating mongodb ... done
+Creating orion ... done
+Creating cygnus ... done
+Creating mysql ... 
+Creating fiware_grafana_1 ... 
+Creating orion ... 
+Creating fiware_grafana_1 ... done
+Attaching to mysql, mongodb, orion, fiware_grafana_1, cygnus
+mysql      | Initializing database
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=mongodb
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] db version v3.4.10
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] git version: 078f28920cb24de0dd479b5ea6c66c644f6326e9
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1t  3 May 2016
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+mysql      | 180116 23:59:41 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+mysql      | 180116 23:59:41 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.5.59) starting as process 68 ...
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] modules: none
+orion      | time=Tuesday 16 Jan 23:59:45 2018.316Z | lvl=ERROR | corr=N/A | trans=N/A | from=N/A | srv=N/A | subsrv=N/A | comp=Orion | op=mongoConnectionPool.cpp[152]:mongoConnect | msg=Database Startup Error (cannot connect to mongo - doing 100 retries with a 1000 microsecond interval)
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] build environment:
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten]     distmod: debian81
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten]     distarch: x86_64
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+mongodb    | 2018-01-16T23:59:41.694+0000 I CONTROL  [initandlisten] options: { storage: { mmapv1: { smallFiles: true } } }
+mongodb    | 2018-01-16T23:59:41.698+0000 I STORAGE  [initandlisten] 
+mongodb    | 2018-01-16T23:59:41.698+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+mongodb    | 2018-01-16T23:59:41.698+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+mongodb    | 2018-01-16T23:59:41.731+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3433M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Starting Grafana" logger=server version=4.6.3 commit=7a06a47 compiled=2017-12-14T08:36:59+0000
+mongodb    | 2018-01-16T23:59:44.273+0000 W STORAGE  [initandlisten] Detected configuration for non-active storage engine mmapv1 when current storage engine is wiredTiger
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config loaded from" logger=settings file=/usr/share/grafana/conf/defaults.ini
+mongodb    | 2018-01-16T23:59:44.273+0000 I CONTROL  [initandlisten] 
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config loaded from" logger=settings file=/etc/grafana/grafana.ini
+mongodb    | 2018-01-16T23:59:44.273+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+mongodb    | 2018-01-16T23:59:44.273+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+mongodb    | 2018-01-16T23:59:44.273+0000 I CONTROL  [initandlisten] 
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.data=/var/lib/grafana"
+mongodb    | 2018-01-16T23:59:45.248+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+mongodb    | 2018-01-16T23:59:46.226+0000 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+mongodb    | 2018-01-16T23:59:46.226+0000 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+mongodb    | 2018-01-16T23:59:46.281+0000 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+mongodb    | 2018-01-16T23:59:46.282+0000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+mongodb    | 2018-01-16T23:59:46.283+0000 I NETWORK  [thread1] waiting for connections on port 27017
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.logs=/var/log/grafana"
+mongodb    | 2018-01-16T23:59:46.316+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50316 #1 (1 connection now open)
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.plugins=/var/lib/grafana/plugins"
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Config overridden from command line" logger=settings arg="default.log.mode=console"
+mongodb    | 2018-01-16T23:59:46.317+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50318 #2 (2 connections now open)
+mongodb    | 2018-01-16T23:59:46.317+0000 I -        [conn1] end connection 172.17.0.4:50316 (1 connection now open)
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Path Home" logger=settings path=/usr/share/grafana
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Path Data" logger=settings path=/var/lib/grafana
+mongodb    | 2018-01-16T23:59:46.318+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50320 #3 (2 connections now open)
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Path Logs" logger=settings path=/var/log/grafana
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Path Plugins" logger=settings path=/var/lib/grafana/plugins
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="App mode production" logger=settings
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Initializing DB" logger=sqlstore dbtype=sqlite3
+mongodb    | 2018-01-16T23:59:46.318+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50322 #4 (3 connections now open)
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Starting DB migration" logger=migrator
+grafana_1  | t=2018-01-16T23:59:45+0000 lvl=info msg="Executing migration" logger=migrator id="create migration_log table"
+mongodb    | 2018-01-16T23:59:46.318+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50324 #5 (4 connections now open)
+grafana_1  | t=2018-01-16T23:59:46+0000 lvl=info msg="Executing migration" logger=migrator id="create user table"
+grafana_1  | t=2018-01-16T23:59:46+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index user.login"
+mongodb    | 2018-01-16T23:59:46.318+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50326 #6 (5 connections now open)
+grafana_1  | t=2018-01-16T23:59:47+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index user.email"
+mongodb    | 2018-01-16T23:59:46.319+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50328 #7 (6 connections now open)
+mongodb    | 2018-01-16T23:59:46.319+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50330 #8 (7 connections now open)
+grafana_1  | t=2018-01-16T23:59:47+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_user_login - v1"
+mongodb    | 2018-01-16T23:59:46.319+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50332 #9 (8 connections now open)
+grafana_1  | t=2018-01-16T23:59:48+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_user_email - v1"
+mongodb    | 2018-01-16T23:59:46.320+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50334 #10 (9 connections now open)
+grafana_1  | t=2018-01-16T23:59:48+0000 lvl=info msg="Executing migration" logger=migrator id="Rename table user to user_v1 - v1"
+mongodb    | 2018-01-16T23:59:46.320+0000 I NETWORK  [thread1] connection accepted from 172.17.0.4:50336 #11 (10 connections now open)
+mongodb    | 2018-01-16T23:59:47.529+0000 I INDEX    [conn2] build index on: orion.entities properties: { v: 2, key: { location.coords: "2dsphere" }, name: "location.coords_2dsphere", ns: "orion.entities", 2dsphereIndexVersion: 3 }
+mongodb    | 2018-01-16T23:59:47.529+0000 I INDEX    [conn2] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+mongodb    | 2018-01-16T23:59:47.569+0000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+mongodb    | 2018-01-16T23:59:47.569+0000 I COMMAND  [conn2] command orion.$cmd command: createIndexes { createIndexes: "entities", indexes: [ { name: "location.coords_2dsphere", key: { location.coords: "2dsphere" } } ] } numYields:0 reslen:113 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 1248ms
+grafana_1  | t=2018-01-16T23:59:48+0000 lvl=info msg="Executing migration" logger=migrator id="create user table v2"
+grafana_1  | t=2018-01-16T23:59:49+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_user_login - v2"
+grafana_1  | t=2018-01-16T23:59:49+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_user_email - v2"
+grafana_1  | t=2018-01-16T23:59:49+0000 lvl=info msg="Executing migration" logger=migrator id="copy data_source v1 to v2"
+grafana_1  | t=2018-01-16T23:59:49+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table user_v1"
+grafana_1  | t=2018-01-16T23:59:49+0000 lvl=info msg="Executing migration" logger=migrator id="Add column help_flags1 to user table"
+mysql      | 180116 23:59:49 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+mysql      | 180116 23:59:49 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.5.59) starting as process 74 ...
+mysql      | 
+mysql      | PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+mysql      | To do so, start the server, then issue the following commands:
+mysql      | 
+mysql      | /usr/local/mysql/bin/mysqladmin -u root password 'new-password'
+mysql      | /usr/local/mysql/bin/mysqladmin -u root -h  password 'new-password'
+mysql      | 
+mysql      | Alternatively you can run:
+mysql      | /usr/local/mysql/bin/mysql_secure_installation
+mysql      | 
+mysql      | which will also give you the option of removing the test
+mysql      | databases and anonymous user created by default.  This is
+mysql      | strongly recommended for production servers.
+mysql      | 
+mysql      | See the manual for more instructions.
+mysql      | 
+mysql      | Please report any problems at http://bugs.mysql.com/
+mysql      | 
+mysql      | Database initialized
+mysql      | 180116 23:59:50 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+mysql      | 180116 23:59:50 [Note] mysqld (mysqld 5.5.59) starting as process 84 ...
+mysql      | MySQL init process in progress...
+mysql      | 180116 23:59:50 [Note] Plugin 'FEDERATED' is disabled.
+mysql      | 180116 23:59:50 InnoDB: The InnoDB memory heap is disabled
+mysql      | 180116 23:59:50 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql      | 180116 23:59:50 InnoDB: Compressed tables use zlib 1.2.3
+mysql      | 180116 23:59:50 InnoDB: Using Linux native AIO
+mysql      | 180116 23:59:50 InnoDB: Initializing buffer pool, size = 128.0M
+mysql      | 180116 23:59:50 InnoDB: Completed initialization of buffer pool
+mysql      | InnoDB: The first specified data file ./ibdata1 did not exist:
+mysql      | InnoDB: a new database to be created!
+mysql      | 180116 23:59:50  InnoDB: Setting file ./ibdata1 size to 10 MB
+mysql      | InnoDB: Database physically writes the file full: wait...
+grafana_1  | t=2018-01-16T23:59:50+0000 lvl=info msg="Executing migration" logger=migrator id="Update user table charset"
+mysql      | 180116 23:59:50  InnoDB: Log file ./ib_logfile0 did not exist: new to be created
+mysql      | InnoDB: Setting log file ./ib_logfile0 size to 5 MB
+mysql      | InnoDB: Database physically writes the file full: wait...
+mysql      | 180116 23:59:50  InnoDB: Log file ./ib_logfile1 did not exist: new to be created
+mysql      | InnoDB: Setting log file ./ib_logfile1 size to 5 MB
+mysql      | InnoDB: Database physically writes the file full: wait...
+grafana_1  | t=2018-01-16T23:59:50+0000 lvl=info msg="Executing migration" logger=migrator id="Add last_seen_at column to user"
+mysql      | MySQL init process in progress...
+grafana_1  | t=2018-01-16T23:59:51+0000 lvl=info msg="Executing migration" logger=migrator id="create temp user table v1-7"
+mysql      | InnoDB: Doublewrite buffer not found: creating new
+grafana_1  | t=2018-01-16T23:59:51+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_temp_user_email - v1-7"
+mysql      | InnoDB: Doublewrite buffer created
+mysql      | InnoDB: 127 rollback segment(s) active.
+mysql      | InnoDB: Creating foreign key constraint system tables
+grafana_1  | t=2018-01-16T23:59:51+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_temp_user_org_id - v1-7"
+mysql      | InnoDB: Foreign key constraint system tables created
+mysql      | 180116 23:59:51  InnoDB: Waiting for the background threads to start
+mysql      | MySQL init process in progress...
+grafana_1  | t=2018-01-16T23:59:52+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_temp_user_code - v1-7"
+grafana_1  | t=2018-01-16T23:59:52+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_temp_user_status - v1-7"
+grafana_1  | t=2018-01-16T23:59:52+0000 lvl=info msg="Executing migration" logger=migrator id="Update temp_user table charset"
+grafana_1  | t=2018-01-16T23:59:52+0000 lvl=info msg="Executing migration" logger=migrator id="create star table"
+grafana_1  | t=2018-01-16T23:59:52+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index star.user_id_dashboard_id"
+mysql      | 180116 23:59:52 InnoDB: 5.5.59 started; log sequence number 0
+mysql      | 180116 23:59:52 [Warning] 'user' entry 'root@mysql' ignored in --skip-name-resolve mode.
+mysql      | 180116 23:59:52 [Warning] 'user' entry '@mysql' ignored in --skip-name-resolve mode.
+mysql      | 180116 23:59:52 [Warning] 'proxies_priv' entry '@ root@mysql' ignored in --skip-name-resolve mode.
+mysql      | 180116 23:59:52 [Note] Event Scheduler: Loaded 0 events
+mysql      | 180116 23:59:52 [Note] mysqld: ready for connections.
+mysql      | Version: '5.5.59'  socket: '/tmp/mysql.sock'  port: 0  MySQL Community Server (GPL)
+grafana_1  | t=2018-01-16T23:59:53+0000 lvl=info msg="Executing migration" logger=migrator id="create org table v1"
+mysql      | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+mysql      | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+grafana_1  | t=2018-01-16T23:59:53+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_org_name - v1"
+grafana_1  | t=2018-01-16T23:59:53+0000 lvl=info msg="Executing migration" logger=migrator id="create org_user table v1"
+grafana_1  | t=2018-01-16T23:59:53+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_org_user_org_id - v1"
+mysql      | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_org_user_org_id_user_id - v1"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="copy data account to org"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Skipping migration condition not fulfilled" logger=migrator id="copy data account to org"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="copy data account_user to org_user"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Skipping migration condition not fulfilled" logger=migrator id="copy data account_user to org_user"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table account"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table account_user"
+mysql      | 180116 23:59:54 [Warning] 'proxies_priv' entry '@ root@mysql' ignored in --skip-name-resolve mode.
+mysql      | 
+mysql      | 180116 23:59:54 [Note] mysqld: Normal shutdown
+mysql      | 
+mysql      | 180116 23:59:54 [Note] Event Scheduler: Purging the queue. 0 events
+mysql      | 180116 23:59:54  InnoDB: Starting shutdown...
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="Update org table charset"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="Update org_user table charset"
+grafana_1  | t=2018-01-16T23:59:54+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard table"
+grafana_1  | t=2018-01-16T23:59:55+0000 lvl=info msg="Executing migration" logger=migrator id="add index dashboard.account_id"
+grafana_1  | t=2018-01-16T23:59:55+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index dashboard_account_id_slug"
+grafana_1  | t=2018-01-16T23:59:55+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard_tag table"
+grafana_1  | t=2018-01-16T23:59:55+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index dashboard_tag.dasboard_id_term"
+grafana_1  | t=2018-01-16T23:59:56+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_dashboard_tag_dashboard_id_term - v1"
+grafana_1  | t=2018-01-16T23:59:56+0000 lvl=info msg="Executing migration" logger=migrator id="Rename table dashboard to dashboard_v1 - v1"
+mysql      | 180116 23:59:56  InnoDB: Shutdown completed; log sequence number 1595675
+mysql      | 180116 23:59:56 [Note] mysqld: Shutdown complete
+mysql      | 
+mysql      | 
+mysql      | MySQL init process done. Ready for start up.
+mysql      | 
+mysql      | 180116 23:59:56 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+mysql      | 180116 23:59:56 [Note] mysqld (mysqld 5.5.59) starting as process 1 ...
+mysql      | 180116 23:59:56 [Note] Plugin 'FEDERATED' is disabled.
+mysql      | 180116 23:59:56 InnoDB: The InnoDB memory heap is disabled
+mysql      | 180116 23:59:56 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql      | 180116 23:59:56 InnoDB: Compressed tables use zlib 1.2.3
+mysql      | 180116 23:59:56 InnoDB: Using Linux native AIO
+mysql      | 180116 23:59:56 InnoDB: Initializing buffer pool, size = 128.0M
+mysql      | 180116 23:59:56 InnoDB: Completed initialization of buffer pool
+mysql      | 180116 23:59:56 InnoDB: highest supported file format is Barracuda.
+grafana_1  | t=2018-01-16T23:59:56+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard v2"
+mysql      | 180116 23:59:56  InnoDB: Waiting for the background threads to start
+grafana_1  | t=2018-01-16T23:59:56+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_dashboard_org_id - v2"
+grafana_1  | t=2018-01-16T23:59:56+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_dashboard_org_id_slug - v2"
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="copy dashboard v1 to v2"
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="drop table dashboard_v1"
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="alter dashboard.data to mediumtext v1"
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="Add column updated_by in dashboard - v2"
+mysql      | 180116 23:59:57 InnoDB: 5.5.59 started; log sequence number 1595675
+mysql      | 180116 23:59:57 [Note] Server hostname (bind-address): '0.0.0.0'; port: 3306
+mysql      | 180116 23:59:57 [Note]   - '0.0.0.0' resolves to '0.0.0.0';
+mysql      | 180116 23:59:57 [Note] Server socket created on IP: '0.0.0.0'.
+mysql      | 180116 23:59:57 [Warning] 'proxies_priv' entry '@ root@mysql' ignored in --skip-name-resolve mode.
+mysql      | 180116 23:59:57 [Note] Event Scheduler: Loaded 0 events
+mysql      | 180116 23:59:57 [Note] mysqld: ready for connections.
+mysql      | Version: '5.5.59'  socket: '/tmp/mysql.sock'  port: 3306  MySQL Community Server (GPL)
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="Add column created_by in dashboard - v2"
+grafana_1  | t=2018-01-16T23:59:57+0000 lvl=info msg="Executing migration" logger=migrator id="Add column gnetId in dashboard"
+grafana_1  | t=2018-01-16T23:59:58+0000 lvl=info msg="Executing migration" logger=migrator id="Add index for gnetId in dashboard"
+grafana_1  | t=2018-01-16T23:59:58+0000 lvl=info msg="Executing migration" logger=migrator id="Add column plugin_id in dashboard"
+grafana_1  | t=2018-01-16T23:59:58+0000 lvl=info msg="Executing migration" logger=migrator id="Add index for plugin_id in dashboard"
+grafana_1  | t=2018-01-16T23:59:58+0000 lvl=info msg="Executing migration" logger=migrator id="Add index for dashboard_id in dashboard_tag"
+grafana_1  | t=2018-01-16T23:59:58+0000 lvl=info msg="Executing migration" logger=migrator id="Update dashboard table charset"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="Update dashboard_tag table charset"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="create data_source table"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="add index data_source.account_id"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index data_source.account_id_name"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="drop index IDX_data_source_account_id - v1"
+grafana_1  | t=2018-01-16T23:59:59+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_data_source_account_id_name - v1"
+grafana_1  | t=2018-01-17T00:00:00+0000 lvl=info msg="Executing migration" logger=migrator id="Rename table data_source to data_source_v1 - v1"
+grafana_1  | t=2018-01-17T00:00:00+0000 lvl=info msg="Executing migration" logger=migrator id="create data_source table v2"
+grafana_1  | t=2018-01-17T00:00:00+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_data_source_org_id - v2"
+grafana_1  | t=2018-01-17T00:00:00+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_data_source_org_id_name - v2"
+grafana_1  | t=2018-01-17T00:00:00+0000 lvl=info msg="Executing migration" logger=migrator id="copy data_source v1 to v2"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table data_source_v1 #2"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="Add column with_credentials"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="Add secure json data column"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="Update data_source table charset"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="create api_key table"
+grafana_1  | t=2018-01-17T00:00:01+0000 lvl=info msg="Executing migration" logger=migrator id="add index api_key.account_id"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="add index api_key.key"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="add index api_key.account_id_name"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="drop index IDX_api_key_account_id - v1"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_api_key_key - v1"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="drop index UQE_api_key_account_id_name - v1"
+grafana_1  | t=2018-01-17T00:00:02+0000 lvl=info msg="Executing migration" logger=migrator id="Rename table api_key to api_key_v1 - v1"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="create api_key table v2"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_api_key_org_id - v2"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_api_key_key - v2"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_api_key_org_id_name - v2"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="copy api_key v1 to v2"
+grafana_1  | t=2018-01-17T00:00:03+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table api_key_v1"
+grafana_1  | t=2018-01-17T00:00:04+0000 lvl=info msg="Executing migration" logger=migrator id="Update api_key table charset"
+grafana_1  | t=2018-01-17T00:00:04+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard_snapshot table v4"
+grafana_1  | t=2018-01-17T00:00:04+0000 lvl=info msg="Executing migration" logger=migrator id="drop table dashboard_snapshot_v4 #1"
+grafana_1  | t=2018-01-17T00:00:04+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard_snapshot table v5 #2"
+grafana_1  | t=2018-01-17T00:00:04+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_dashboard_snapshot_key - v5"
+grafana_1  | t=2018-01-17T00:00:05+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_dashboard_snapshot_delete_key - v5"
+grafana_1  | t=2018-01-17T00:00:05+0000 lvl=info msg="Executing migration" logger=migrator id="create index IDX_dashboard_snapshot_user_id - v5"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="alter dashboard_snapshot to mediumtext v2"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="Update dashboard_snapshot table charset"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="create quota table v1"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_quota_org_id_user_id_target - v1"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="Update quota table charset"
+grafana_1  | t=2018-01-17T00:00:06+0000 lvl=info msg="Executing migration" logger=migrator id="create plugin_setting table"
+grafana_1  | t=2018-01-17T00:00:07+0000 lvl=info msg="Executing migration" logger=migrator id="create index UQE_plugin_setting_org_id_plugin_id - v1"
+grafana_1  | t=2018-01-17T00:00:07+0000 lvl=info msg="Executing migration" logger=migrator id="Add column plugin_version to plugin_settings"
+grafana_1  | t=2018-01-17T00:00:07+0000 lvl=info msg="Executing migration" logger=migrator id="Update plugin_setting table charset"
+grafana_1  | t=2018-01-17T00:00:07+0000 lvl=info msg="Executing migration" logger=migrator id="create session table"
+grafana_1  | t=2018-01-17T00:00:07+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table playlist table"
+grafana_1  | t=2018-01-17T00:00:08+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old table playlist_item table"
+grafana_1  | t=2018-01-17T00:00:08+0000 lvl=info msg="Executing migration" logger=migrator id="create playlist table v2"
+cygnus     | Warning: JAVA_HOME is not set!
+cygnus     | + exec /usr/bin/java -Xmx20m -Dflume.root.logger=INFO,console -Duser.timezone=UTC -Dfile.encoding=UTF-8 -cp '/opt/apache-flume/conf:/opt/apache-flume/lib/*:/opt/apache-flume/plugins.d/cygnus/lib/*:/opt/apache-flume/plugins.d/cygnus/libext/*' -Djava.library.path= com.telefonica.iot.cygnus.nodes.CygnusApplication -f /opt/apache-flume/conf/agent.conf -n cygnus-ngsi -p 8081
+grafana_1  | t=2018-01-17T00:00:08+0000 lvl=info msg="Executing migration" logger=migrator id="create playlist item table v2"
+cygnus     | SLF4J: Class path contains multiple SLF4J bindings.
+cygnus     | SLF4J: Found binding in [jar:file:/opt/apache-flume/lib/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus     | SLF4J: Found binding in [jar:file:/opt/apache-flume/plugins.d/cygnus/lib/cygnus-ngsi-1.8.0_SNAPSHOT-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus     | SLF4J: Found binding in [jar:file:/opt/apache-flume/plugins.d/cygnus/libext/cygnus-common-1.8.0_SNAPSHOT-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+cygnus     | SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+cygnus     | time=2018-01-17T00:00:08.781Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=N/A | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[171] : Starting Cygnus, version 1.8.0_SNAPSHOT.3f677284750cd601756a67a72a20267090efdff8
+grafana_1  | t=2018-01-17T00:00:08+0000 lvl=info msg="Executing migration" logger=migrator id="Update playlist table charset"
+cygnus     | time=2018-01-17T00:00:08.890Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[303] : Waiting for valid Flume components references...
+cygnus     | time=2018-01-17T00:00:08.891Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.node.PollingPropertiesFileConfigurationProvider[61] : Configuration provider starting
+cygnus     | time=2018-01-17T00:00:08.894Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=run | msg=org.apache.flume.node.PollingPropertiesFileConfigurationProvider$FileWatcherRunnable[133] : Reloading configuration file:/opt/apache-flume/conf/agent.conf
+cygnus     | time=2018-01-17T00:00:08.901Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:hdfs-sink
+cygnus     | time=2018-01-17T00:00:08.901Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:sth-sink
+cygnus     | time=2018-01-17T00:00:08.901Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:cartodb-sink
+cygnus     | time=2018-01-17T00:00:08.902Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:ckan-sink
+cygnus     | time=2018-01-17T00:00:08.902Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:cartodb-sink
+cygnus     | time=2018-01-17T00:00:08.902Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mongo-sink
+cygnus     | time=2018-01-17T00:00:08.902Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.903Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:hdfs-sink
+cygnus     | time=2018-01-17T00:00:08.903Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:hdfs-sink
+cygnus     | time=2018-01-17T00:00:08.903Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.903Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.904Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.905Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:hdfs-sink
+cygnus     | time=2018-01-17T00:00:08.906Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mongo-sink
+cygnus     | time=2018-01-17T00:00:08.907Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=org.apache.flume.conf.FlumeConfiguration[101] : Configuration property ignored: cygnus-ngsi.sinks.ckan-sink.api_key = 
+cygnus     | time=2018-01-17T00:00:08.908Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:ckan-sink
+cygnus     | time=2018-01-17T00:00:08.908Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[930] : Added sinks: mysql-sink mongo-sink sth-sink ckan-sink hdfs-sink cartodb-sink Agent: cygnus-ngsi
+cygnus     | time=2018-01-17T00:00:08.908Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:ckan-sink
+cygnus     | time=2018-01-17T00:00:08.908Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:cartodb-sink
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:hdfs-sink
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:sth-sink
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=org.apache.flume.conf.FlumeConfiguration[101] : Configuration property ignored: cygnus-ngsi.sinks.hdfs-sink.oauth2_token = 
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mongo-sink
+cygnus     | time=2018-01-17T00:00:08.909Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mongo-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:ckan-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:sth-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:sth-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:ckan-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:sth-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mysql-sink
+cygnus     | time=2018-01-17T00:00:08.910Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=addProperty | msg=org.apache.flume.conf.FlumeConfiguration$AgentConfiguration[1016] : Processing:mongo-sink
+cygnus     | time=2018-01-17T00:00:08.922Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=validateConfiguration | msg=org.apache.flume.conf.FlumeConfiguration[140] : Post-validation flume configuration contains configuration for agents: [cygnus-ngsi]
+cygnus     | time=2018-01-17T00:00:08.922Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[150] : Creating channels
+cygnus     | time=2018-01-17T00:00:08.932Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel cartodb-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.937Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel cartodb-channel
+cygnus     | time=2018-01-17T00:00:08.937Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel sth-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.937Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel sth-channel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel ckan-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel ckan-channel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel hdfs-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel hdfs-channel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel mongo-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.938Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel mongo-channel
+cygnus     | time=2018-01-17T00:00:08.939Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.channel.DefaultChannelFactory[40] : Creating instance of channel mysql-channel type com.telefonica.iot.cygnus.channels.CygnusMemoryChannel
+cygnus     | time=2018-01-17T00:00:08.939Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=loadChannels | msg=org.apache.flume.node.AbstractConfigurationProvider[205] : Created channel mysql-channel
+cygnus     | time=2018-01-17T00:00:08.939Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.source.DefaultSourceFactory[39] : Creating instance of source http-source, type org.apache.flume.source.http.HTTPSource
+grafana_1  | t=2018-01-17T00:00:08+0000 lvl=info msg="Executing migration" logger=migrator id="Update playlist_item table charset"
+cygnus     | time=2018-01-17T00:00:08.968Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=configure | msg=com.telefonica.iot.cygnus.handlers.NGSIRestHandler[157] : [NGSIRestHandler] Startup completed
+cygnus     | time=2018-01-17T00:00:08.981Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: ckan-sink, type: com.telefonica.iot.cygnus.sinks.NGSICKANSink
+cygnus     | time=2018-01-17T00:00:08.996Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: cartodb-sink, type: com.telefonica.iot.cygnus.sinks.NGSICartoDBSink
+cygnus     | time=2018-01-17T00:00:08.998Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: hdfs-sink, type: com.telefonica.iot.cygnus.sinks.NGSIHDFSSink
+cygnus     | time=2018-01-17T00:00:09.002Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=configure | msg=com.telefonica.iot.cygnus.sinks.NGSIHDFSSink[290] : [hdfs-sink] No OAuth2 token provided. Cygnus can continue, but HDFS sink may not properly work if WebHDFS service is protected with such an authentication and authorization mechanism!
+cygnus     | time=2018-01-17T00:00:09.004Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: mongo-sink, type: com.telefonica.iot.cygnus.sinks.NGSIMongoSink
+cygnus     | time=2018-01-17T00:00:09.008Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: mysql-sink, type: com.telefonica.iot.cygnus.sinks.NGSIMySQLSink
+cygnus     | time=2018-01-17T00:00:09.011Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=create | msg=org.apache.flume.sink.DefaultSinkFactory[40] : Creating instance of sink: sth-sink, type: com.telefonica.iot.cygnus.sinks.NGSISTHSink
+cygnus     | time=2018-01-17T00:00:09.014Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel cartodb-channel connected to [http-source, cartodb-sink]
+cygnus     | time=2018-01-17T00:00:09.014Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel sth-channel connected to [http-source, sth-sink]
+cygnus     | time=2018-01-17T00:00:09.015Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel ckan-channel connected to [http-source, ckan-sink]
+cygnus     | time=2018-01-17T00:00:09.015Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel hdfs-channel connected to [http-source, hdfs-sink]
+cygnus     | time=2018-01-17T00:00:09.015Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel mongo-channel connected to [http-source, mongo-sink]
+cygnus     | time=2018-01-17T00:00:09.015Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=getConfiguration | msg=org.apache.flume.node.AbstractConfigurationProvider[119] : Channel mysql-channel connected to [http-source, mysql-sink]
+cygnus     | time=2018-01-17T00:00:09.020Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[138] : Starting new configuration:{ sourceRunners:{http-source=EventDrivenSourceRunner: { source:org.apache.flume.source.http.HTTPSource{name:http-source,state:IDLE} }} sinkRunners:{ckan-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@47b6b3ac counterGroup:{ name:null counters:{} } }, cartodb-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@2bce05fc counterGroup:{ name:null counters:{} } }, hdfs-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@62eaf9db counterGroup:{ name:null counters:{} } }, mongo-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@30b9cb99 counterGroup:{ name:null counters:{} } }, mysql-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@75e5c2cc counterGroup:{ name:null counters:{} } }, sth-sink=SinkRunner: { policy:org.apache.flume.sink.DefaultSinkProcessor@3f581b8c counterGroup:{ name:null counters:{} } }} channels:{cartodb-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: cartodb-channel}, sth-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: sth-channel}, ckan-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: ckan-channel}, mysql-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: mysql-channel}, mongo-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: mongo-channel}, hdfs-channel=com.telefonica.iot.cygnus.channels.CygnusMemoryChannel{name: hdfs-channel}} }
+cygnus     | time=2018-01-17T00:00:09.020Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel cartodb-channel
+cygnus     | time=2018-01-17T00:00:09.020Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel sth-channel
+cygnus     | time=2018-01-17T00:00:09.022Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel ckan-channel
+cygnus     | time=2018-01-17T00:00:09.023Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel mysql-channel
+cygnus     | time=2018-01-17T00:00:09.024Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel mongo-channel
+cygnus     | time=2018-01-17T00:00:09.024Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[145] : Starting Channel hdfs-channel
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: mysql-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: sth-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: mongo-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: cartodb-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.066Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: cartodb-channel started
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: mysql-channel started
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: ckan-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: CHANNEL, name: hdfs-channel, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.066Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: ckan-channel started
+cygnus     | time=2018-01-17T00:00:09.066Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: mongo-channel started
+cygnus     | time=2018-01-17T00:00:09.065Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: sth-channel started
+cygnus     | time=2018-01-17T00:00:09.067Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: CHANNEL, name: hdfs-channel started
+cygnus     | time=2018-01-17T00:00:09.069Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink ckan-sink
+cygnus     | time=2018-01-17T00:00:09.069Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink cartodb-sink
+cygnus     | time=2018-01-17T00:00:09.069Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink hdfs-sink
+cygnus     | time=2018-01-17T00:00:09.070Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink mongo-sink
+cygnus     | time=2018-01-17T00:00:09.070Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink mysql-sink
+cygnus     | time=2018-01-17T00:00:09.070Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[173] : Starting Sink sth-sink
+cygnus     | time=2018-01-17T00:00:09.070Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=startAllComponents | msg=org.apache.flume.node.Application[184] : Starting Source http-source
+cygnus     | time=2018-01-17T00:00:09.072Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=initializeBackend | msg=com.telefonica.iot.cygnus.sinks.NGSICartoDBSink[284] : [cartodb-sink] Json containing CartoDB API keys has been read: {   "cartodb_keys": [      {         "username": "carto",         "endpoint": "https://carto.cartodb.com","key":"carto"      }   ]}
+cygnus     | time=2018-01-17T00:00:09.080Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[53] : Grouping rules read: 
+cygnus     | time=2018-01-17T00:00:09.081Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [sth-sink] Startup completed
+cygnus     | time=2018-01-17T00:00:09.083Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [mongo-sink] Startup completed
+cygnus     | time=2018-01-17T00:00:09.086Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [mysql-sink] Startup completed
+cygnus     | time=2018-01-17T00:00:09.089Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[61] : Grouping rules syntax has errors. Details: null
+cygnus     | time=2018-01-17T00:00:09.092Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[53] : Grouping rules read: 
+cygnus     | time=2018-01-17T00:00:09.094Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.interceptors.CygnusGroupingRules[61] : Grouping rules syntax has errors. Details: null
+cygnus     | time=2018-01-17T00:00:09.105Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=initializeBackend | msg=com.telefonica.iot.cygnus.sinks.NGSICartoDBSink[288] : [cartodb-sink] Json containing CartoDB API keys is syntactically OK
+cygnus     | time=2018-01-17T00:00:09.106Z | lvl=WARN | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=initializeBackend | msg=com.telefonica.iot.cygnus.sinks.NGSICartoDBSink[350] : [cartodb-sink] Invalid API key entry, type is null or empty. Discarding it.
+cygnus     | time=2018-01-17T00:00:09.106Z | lvl=ERROR | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSICartoDBSink[274] : [cartodb-sink] Error while creating the CartoDB persistence backend. Details: All the API key entries were discarded
+cygnus     | time=2018-01-17T00:00:09.106Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[346] : [cartodb-sink] Startup completed. Nevertheless, there are errors in the configuration, thus this sink will not run the expected logic
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="drop preferences table v2"
+cygnus     | time=2018-01-17T00:00:09.219Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=register | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[110] : Monitoried counter group for type: SOURCE, name: http-source, registered successfully.
+cygnus     | time=2018-01-17T00:00:09.219Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=org.apache.flume.instrumentation.MonitoredCounterGroup[94] : Component type: SOURCE, name: http-source started
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="drop preferences table v3"
+cygnus     | time=2018-01-17T00:00:09.321Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[81] : Setting max total connections (500)
+cygnus     | time=2018-01-17T00:00:09.321Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[81] : Setting max total connections (500)
+cygnus     | time=2018-01-17T00:00:09.322Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[82] : Setting default max connections per route (100)
+cygnus     | time=2018-01-17T00:00:09.321Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[82] : Setting default max connections per route (100)
+cygnus     | time=2018-01-17T00:00:09.342Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [hdfs-sink] Startup completed
+cygnus     | time=2018-01-17T00:00:09.349Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[81] : Setting max total connections (500)
+cygnus     | time=2018-01-17T00:00:09.349Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=<init> | msg=com.telefonica.iot.cygnus.backends.http.HttpClientFactory[82] : Setting default max connections per route (100)
+cygnus     | time=2018-01-17T00:00:09.350Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=start | msg=com.telefonica.iot.cygnus.sinks.NGSISink[356] : [ckan-sink] Startup completed
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="create preferences table v3"
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="Update preferences table charset"
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="create alert table v1"
+cygnus     | time=2018-01-17T00:00:09.891Z | lvl=INFO | corr=N/A | trans=N/A | srv=N/A | subsrv=N/A | comp=cygnus-ngsi | op=main | msg=com.telefonica.iot.cygnus.nodes.CygnusApplication[315] : Starting a Jetty server listening on 0.0.0.0:8081 (Management Interface)
+grafana_1  | t=2018-01-17T00:00:09+0000 lvl=info msg="Executing migration" logger=migrator id="add index alert org_id & id "
+grafana_1  | t=2018-01-17T00:00:10+0000 lvl=info msg="Executing migration" logger=migrator id="add index alert state"
+grafana_1  | t=2018-01-17T00:00:10+0000 lvl=info msg="Executing migration" logger=migrator id="add index alert dashboard_id"
+grafana_1  | t=2018-01-17T00:00:13+0000 lvl=info msg="Executing migration" logger=migrator id="create alert_notification table v1"
+grafana_1  | t=2018-01-17T00:00:13+0000 lvl=info msg="Executing migration" logger=migrator id="Add column is_default"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="add index alert_notification org_id & name"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="Update alert table charset"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="Update alert_notification table charset"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="Drop old annotation table v4"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="create annotation table v5"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="add index annotation 0 v3"
+grafana_1  | t=2018-01-17T00:00:14+0000 lvl=info msg="Executing migration" logger=migrator id="add index annotation 1 v3"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="add index annotation 2 v3"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="add index annotation 3 v3"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="add index annotation 4 v3"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="Update annotation table charset"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="Add column region_id to annotation table"
+grafana_1  | t=2018-01-17T00:00:15+0000 lvl=info msg="Executing migration" logger=migrator id="Drop category_id index"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="Add column tags to annotation table"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="Create annotation_tag table v2"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="Add unique index annotation_tag.annotation_id_tag_id"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="Update alert annotations and set TEXT to empty"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="create test_data table"
+grafana_1  | t=2018-01-17T00:00:16+0000 lvl=info msg="Executing migration" logger=migrator id="create dashboard_version table v1"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="add index dashboard_version.dashboard_id"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="add unique index dashboard_version.dashboard_id and dashboard_version.version"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="Set dashboard version to 1 where 0"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="save existing dashboard data in dashboard_version table v1"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="alter dashboard_version.data to mediumtext v1"
+grafana_1  | t=2018-01-17T00:00:17+0000 lvl=info msg="Executing migration" logger=migrator id="create tag table"
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Executing migration" logger=migrator id="add index tag.key_value"
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Created default admin user: admin"
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Starting plugin search" logger=plugins
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=warn msg="Plugin dir does not exist" logger=plugins dir=/var/lib/grafana/plugins
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Plugin dir created" logger=plugins dir=/var/lib/grafana/plugins
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Initializing CleanUpService" logger=cleanup
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Initializing Alerting" logger=alerting.engine
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Initializing Stream Manager"
+grafana_1  | t=2018-01-17T00:00:18+0000 lvl=info msg="Initializing HTTP Server" logger=http.server address=0.0.0.0:3000 protocol=http subUrl= socket=
+orion      | time=Wednesday 17 Jan 00:03:57 2018.714Z | lvl=WARN | corr=ea068018-fb19-11e7-bc60-0242ac110004 | trans=1516147185-315-00000000002 | from=192.168.1.51 | srv=<default> | subsrv=<default> | comp=Orion | op=AlarmManager.cpp[405]:badInput | msg=Raising alarm BadInput 192.168.1.51: service '/favicon.ico' not found
+
+
