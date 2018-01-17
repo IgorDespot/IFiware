@@ -15,7 +15,7 @@ services:
       - "27017"
     volumes:
       - mongodb-volume:/data
-    command: mongod --smallfiles
+    command: --smallfiles
     networks:
       - fiware
 
@@ -69,7 +69,7 @@ services:
       - POSTGRES_DB=fiware
       - POSTGRES_PASSWORD=fiware
     volumes:
-      - postgres-cygnus-volume:/var/lib/postgres
+      - "./data/db/postgres:/var/lib/postgresql/data:rw"
     networks:
       - fiware
 
