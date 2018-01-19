@@ -2,9 +2,13 @@
 
 * [Introducción](#introducción)
 * [Orion](#orion)
+    * [Crear entidad](#crear-entidad)
     * [Crear entidades](#crear-entidades)
     * [Modificar atributo](#modificar-atributo)
     * [Modificar atributos](#modificar-atributos)
+    * [Modificar entidaades](#modificar-entidades)
+    * [Obtener entidades](#obtener-entidades)
+    * [Subscripciones](#subscripciones)
 
 ## Introducción
 
@@ -44,7 +48,7 @@ Donde como se observa posee un tipo, el cual establece un estandar a partir del 
 
 Las operaciones basicas del Orion son:
 
-### Crear entidades
+### Crear entidad
 
 Bajo una peticion de tipo POST con los siguientes encabezados:
 
@@ -73,6 +77,53 @@ con el siguiente cuerpo
 se logra crear una entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/entities` 
 el codigo de respuesta indicado esta dado por 201
 
+### Crear entidades
+
+
+Bajo una peticion de tipo POST con los siguientes encabezados:
+
+``` JSON
+Content-Type  : application/json
+Fiware-ServicePath :  /Test
+```
+
+con el siguiente cuerpo
+
+``` JSON
+{
+	"actionType":"APPEND",
+	"entities":[
+	{
+		"type": "Sensor",
+		"id": "udea",
+		"temp": {
+    	"value": 23.2,
+    	"type": "float"
+		},
+		"location": {
+    	"value": "6.2669533, -75.5691113",
+    	"type": "geo:point"
+		}
+	},
+	{
+		"type": "Sensor",
+		"id": "casa",
+		"temp": {
+    	"value": 21.6,
+    	"type": "float"
+		},
+		"location": {
+    	"value": "6.2669544, -75.5691223",
+    	"type": "geo:point"
+		}
+	}
+]
+}
+```
+se logra crear un lote de entidades enviando la petición a la dirección: `ip_context_broker:1026/v2/op/update` 
+el codigo de respuesta indicado esta dado por 204
+
+
 ### Modificar atributo
 
 Bajo una peticion de tipo PUT con los siguientes encabezados:
@@ -91,7 +142,7 @@ con el siguiente cuerpo
 }
 ```
 
-se logra editar el atributo `temp` de la entidad enviando la petición a la dirección: `192.168.1.51:1026/v2/entities/udea/attrs/temp` 
+se logra editar el atributo `temp` de la entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/entities/udea/attrs/temp` 
 Donde udea es el id de la entidad y temp es el atributo a modificar,el codigo de respuesta indicado esta dado por 204
 
 
@@ -129,4 +180,9 @@ con el siguiente cuerpo
 se logra editar toda una entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/op/update` 
 el codigo de respuesta indicado esta dado por 204
 
+###
+
+En caso de requerir documentación propia de los desarrolladores, se encuentra en el siguiente enlace:  [Orion Context Broker](http://fiware-orion.readthedocs.io/en/develop/user/walkthrough_apiv2/)
+
 [Top](#top)
+
