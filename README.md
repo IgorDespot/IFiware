@@ -52,6 +52,7 @@ Bajo una peticion de tipo POST con los siguientes encabezados:
 Content-Type  : application/json
 Fiware-ServicePath :  /Test
 ```
+
 con el siguiente cuerpo
 
 ``` JSON
@@ -72,14 +73,60 @@ con el siguiente cuerpo
 se logra crear una entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/entities` 
 el codigo de respuesta indicado esta dado por 201
 
-
 ### Modificar atributo
 
+Bajo una peticion de tipo PUT con los siguientes encabezados:
+
+``` JSON
+Content-Type  : application/json
+Fiware-ServicePath :  /Test
+```
+
+con el siguiente cuerpo
+
+``` JSON
+{
+	"type":"float",
+	"value": 21.9
+}
+```
+
+se logra editar el atributo `temp` de la entidad enviando la petición a la dirección: `192.168.1.51:1026/v2/entities/udea/attrs/temp` 
+Donde udea es el id de la entidad y temp es el atributo a modificar,el codigo de respuesta indicado esta dado por 204
 
 
 ### Modificar atributos
 
+Bajo una peticion de tipo POST con los siguientes encabezados:
 
+``` JSON
+Content-Type  : application/json
+Fiware-ServicePath :  /Test
+```
+
+con el siguiente cuerpo
+
+
+``` JSON
+{
+  "actionType": "UPDATE",
+  "entities": [
+    {
+    "type": "Sensor",
+    "id": "udea",
+    "temp": {
+        "value": 22.1,
+        "type": "float"
+    },
+    "location": {
+        "value": "6.2669533, -75.5691113",
+        "type": "geo:point"
+    }
+  }
+  ]
+}
+```
+se logra editar toda una entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/op/update` 
+el codigo de respuesta indicado esta dado por 204
 
 [Top](#top)
-
