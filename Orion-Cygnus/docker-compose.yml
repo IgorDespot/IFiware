@@ -1,0 +1,94 @@
+version: "2"
+
+networks:
+  fiware:
+    external: true
+
+services:
+  mongodb:
+    image: mongo:3.4.2
+    hostname: mongodb
+    container_name: mongodb
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+    networks:
+      - fiware
+
+  orion:
+    image: fiware/orion:latest
+    hostname: orion
+    container_name: orion
+    links:
+      - mongodb
+    expose:
+      - "1026"
+    ports:
+      - "1026:1026"
+    command: -dbhost mongodb
+    networks:
+      - fiware
+
+  cygnus:
+    image: fiware/cygnus-ngsi:latest
+    hostname: cygnus
+    container_name: cygnus
+    volumes:
+      - "./config/cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
+      - "./config/cygnus/grouping_rules.conf:/opt/apache-flume/conf/grouping_rules.conf:rw"
+    links:
+      - orion
+      - postgres-cygnus
+      - mysql-cygnus
+    expose:
+      - "5050"
+      - "8081"
+    ports:
+      - "5050:5050"
+      - "8081:8081"
+    environment:
+      - CYGNUS_POSTGRES_USER=postgres
+      - CYGNUS_POSTGRES_DB=fiware
+      - CYGNUS_POSTGRES_PASSWORD=fiware
+      - CYGNUS_MYSQL_HOST=mysql-cygnus
+      - CYGNUS_MYSQL_PORT=3306
+      - CYGNUS_MYSQL_USER=root
+      - CYGNUS_MYSQL_PASS=fiware
+      - CYGNUS_LOG_LEVEL=INFO
+    networks:
+      - fiware
+
+  postgres-cygnus:
+    restart: always
+    image: postgres:9.5
+    hostname: postgres-cygnus
+    container_name: postgres-cygnus
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=fiware
+      - POSTGRES_PASSWORD=fiware
+    volumes:
+      - "./data/db/postgres:/var/lib/postgresql/data:rw"
+    networks:
+      - fiware
+
+  mysql-cygnus:
+    image: mysql
+    hostname: mysql-cygnus
+    container_name: mysql-cygnus
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=fiware
+    volumes:
+      - "./data/db/mysql:/var/lib/mysql:rw"
+    networks:
+      - fiware
