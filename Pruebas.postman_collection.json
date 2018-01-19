@@ -1,0 +1,184 @@
+{
+	"info": {
+		"name": "Pruebas",
+		"_postman_id": "356ec857-5253-031f-a475-d67ec2745e7c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crear entidad",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Fiware-ServicePath",
+						"value": "/Test"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"Sensor\",\r\n  \"id\": \"udea\",\r\n  \"temp\": {\r\n    \"value\": 23.2,\r\n    \"type\": \"float\"\r\n  },\r\n  \"location\": {\r\n    \"value\": \"6.2669533, -75.5691113\",\r\n    \"type\": \"geo:point\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1026/v2/entities",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "pedir una instancia",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Fiware-ServicePath",
+						"value": "/Test"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "192.168.1.51:1026/v2/entities/casa",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"51"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities",
+						"casa"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar varios atributos  copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Fiware-ServicePath",
+						"value": "/Test"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"actionType\": \"UPDATE\",\r\n  \"entities\": [\r\n    {\r\n    \"type\": \"Sensor\",\r\n    \"id\": \"casa\",\r\n    \"temp\": {\r\n        \"value\": 25.3,\r\n        \"type\": \"float\"\r\n    },\r\n    \"location\": {\r\n        \"value\": \"6.2054914, -75.603196\",\r\n        \"type\": \"geo:point\"\r\n    }\r\n  }\r\n  ]\r\n}\r\n"
+				},
+				"url": {
+					"raw": "192.168.1.51:1026/v2/op/update",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"51"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"op",
+						"update"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "subscripciones",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n  \"subject\":{\n    \"entities\": [\n        {\n            \"type\": \"Sensor\",\n            \"isPattern\": \"false\",\n            \"id\": \"casa\"\n        },{\n            \"type\": \"Sensor\",\n            \"isPattern\": \"false\",\n            \"id\": \"udea\"\n        }\n    ],\n    \"condition\":{\n    \"attrs\": [\"temp\"]      \n    }\n  },\n  \"notification\":{\n    \"http\":{\"url\":\"http://192.168.1.51:5050/notify\"},\n    \"attrs\": [\"temp\"],\n    \"attrsFormat\":\"legacy\"\n  },\n  \"expires\": \"2099-12-31T23:00:00.00Z\",\n  \"throttling\": 5\n}"
+				},
+				"url": {
+					"raw": "192.168.1.51:1026/v2/subscriptions",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"51"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"subscriptions"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar rapido",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Fiware-ServicePath",
+						"value": "/Test"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\":\"float\",\n  \"value\": 21.9\n}"
+				},
+				"url": {
+					"raw": "192.168.1.51:1026/v2/entities/udea/attrs/temp",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"51"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities",
+						"udea",
+						"attrs",
+						"temp"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
