@@ -2,9 +2,9 @@
 
 * [Introducción](#introducción)
 * [Orion](#orion)
-    * [Crear entidades](#crear entidades)
-    * [Modificar atributo](#modificar atributo)
-    * [Modificar atributos](#modificar atributos)
+    * [Crear entidades](#crear-entidades)
+    * [Modificar atributo](#modificar-atributo)
+    * [Modificar atributos](#modificar-atributos)
 
 ## Introducción
 
