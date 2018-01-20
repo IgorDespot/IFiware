@@ -9,7 +9,7 @@
     * [Modificar entidaades](#modificar-entidades)
     * [Obtener entidades](#obtener-entidades)
     * [Obtener atributos](#obtener-atributos)
-    * [Subscripciones](#subscripciones)
+    * [Suscripciones](#suscripciones)
 
 ## Introducción
 
@@ -234,6 +234,7 @@ Bajo una peticion de tipo GET con los siguientes encabezados:
 Fiware-ServicePath :  /Test
 ```
 se logra observar el contenido de la entidad `casa`enviando la petición a la dirección: `ip_context_broker:1026/v2/entities/casa` 
+
 el codigo de respuesta indicado esta dado por 200 y el contenido de la entidad en formato JSON
 
 Al usar la direccion: `ip_context_broker:1026/v2/entities/` se retornan todas las entidades.
@@ -249,17 +250,51 @@ Bajo una peticion de tipo GET con los siguientes encabezados:
 Fiware-ServicePath :  /Test
 ```
 se logra observar el valor del atributo `temp` de la entidad `casa`enviando la petición a la dirección: `ip_context_broker:1026/v2/entities/casa/attrs/temp` 
+
 el codigo de respuesta indicado esta dado por 200 y el valor del atributo se entrega en formato JSON
 
 
 ### suscripciones
 
+Las subscripciones son necesarias para redirigir los datos destinados al Orion hacia el Cygnus de tal manera que estos queden registrados. Estas se hacen bajo una peticion de tipo POST con los siguientes encabezados:
 
+``` JSON
+Fiware-ServicePath :  /Test
+```
+
+con el siguiente cuerpo
+
+``` JSON
+{	
+	"subject":{
+		"entities": [
+        {
+            "type": "Sensor",
+            "isPattern": "false",
+            "id": "casa"
+        },{
+            "type": "Sensor",
+            "isPattern": "false",
+            "id": "udea"
+        }
+    ],
+    "condition":{
+		"attrs": ["temp"]    	
+    }
+	},
+	"notification":{
+		"http":{"url":"http://ip_context_broker:5050/notify"},
+		"attrs": ["temp"],
+		"attrsFormat":"legacy"
+	},
+	"expires": "2099-12-31T23:00:00.00Z",
+	"throttling": 5
+}
+```
+Para mas detalles sobre las suscripciones consulte la ducomentación propia: [suscripciones](http://fiware-orion.readthedocs.io/en/develop/user/walkthrough_apiv2/#subscriptions)
 
 
 En caso de requerir documentación propia de los desarrolladores, se encuentra en el siguiente enlace:  [Orion Context Broker](http://fiware-orion.readthedocs.io/en/develop/user/walkthrough_apiv2/)
-
-
 
 [Top](#top)
 
