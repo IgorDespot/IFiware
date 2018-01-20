@@ -6,6 +6,7 @@ mysql y postgresql
 Los archivos de configuración base se pueden obtener de los siguientes enlaces y luego eliminando la extensión template
 
 [agent.conf](https://github.com/telefonicaid/fiware-cygnus/blob/master/cygnus-common/conf/agent.conf.template)
+
 [grouping_rules.conf](https://github.com/telefonicaid/fiware-cygnus/blob/master/cygnus-ngsi/conf/grouping_rules.conf.template)
 
 Un ejemplo de implementación basada en docker-compose: 
