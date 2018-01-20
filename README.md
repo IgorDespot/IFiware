@@ -8,6 +8,7 @@
     * [Modificar atributos](#modificar-atributos)
     * [Modificar entidaades](#modificar-entidades)
     * [Obtener entidades](#obtener-entidades)
+    * [Obtener atributos](#obtener-atributos)
     * [Subscripciones](#subscripciones)
 
 ## Introducción
@@ -78,7 +79,6 @@ se logra crear una entidad enviando la petición a la dirección: `ip_context_br
 el codigo de respuesta indicado esta dado por 201
 
 ### Crear entidades
-
 
 Bajo una peticion de tipo POST con los siguientes encabezados:
 
@@ -180,9 +180,86 @@ con el siguiente cuerpo
 se logra editar toda una entidad enviando la petición a la dirección: `ip_context_broker:1026/v2/op/update` 
 el codigo de respuesta indicado esta dado por 204
 
-###
+### Modificar entidades
+
+Bajo una peticion de tipo POST con los siguientes encabezados:
+
+``` JSON
+Content-Type  : application/json
+Fiware-ServicePath :  /Test
+```
+
+con el siguiente cuerpo
+
+``` JSON
+{
+	"actionType":"UPDATE",
+	"entities":[
+	{
+		"type": "Sensor",
+		"id": "udea",
+		"temp": {
+    	"value": 26.7,
+    	"type": "float"
+		},
+		"location": {
+    	"value": "6.2669533, -75.5691113",
+    	"type": "geo:point"
+		}
+	},
+	{
+		"type": "Sensor",
+		"id": "casa",
+		"temp": {
+    	"value": 24.2,
+    	"type": "float"
+		},
+		"location": {
+    	"value": "6.2669544, -75.5691223",
+    	"type": "geo:point"
+		}
+	}
+]
+}
+```
+se logra modificar varias entidades enviando la petición a la dirección: `ip_context_broker:1026/v2/op/update` 
+el codigo de respuesta indicado esta dado por 204
+
+
+### Obtener entidades
+
+Bajo una peticion de tipo GET con los siguientes encabezados:
+
+``` JSON
+Fiware-ServicePath :  /Test
+```
+se logra observar el contenido de la entidad `casa`enviando la petición a la dirección: `ip_context_broker:1026/v2/entities/casa` 
+el codigo de respuesta indicado esta dado por 200 y el contenido de la entidad en formato JSON
+
+Al usar la direccion: `ip_context_broker:1026/v2/entities/` se retornan todas las entidades.
+
+Por ultimo Orion soporta operaciones de filtrado descritas en la documentación propia de los desarrolladores: [filtros](https://fiware-orion.readthedocs.io/en/master/user/filtering/index.html)
+
+
+### Obtener atributos
+
+Bajo una peticion de tipo GET con los siguientes encabezados:
+
+``` JSON
+Fiware-ServicePath :  /Test
+```
+se logra observar el valor del atributo `temp` de la entidad `casa`enviando la petición a la dirección: `ip_context_broker:1026/v2/entities/casa/attrs/temp` 
+el codigo de respuesta indicado esta dado por 200 y el valor del atributo se entrega en formato JSON
+
+
+### suscripciones
+
+
+
 
 En caso de requerir documentación propia de los desarrolladores, se encuentra en el siguiente enlace:  [Orion Context Broker](http://fiware-orion.readthedocs.io/en/develop/user/walkthrough_apiv2/)
+
+
 
 [Top](#top)
 
