@@ -1,0 +1,1 @@
+http://192.168.1.51:8000/oauth2/authorize/?response_type=code&client_id=ff9e06dc21a342a8a2aa4c9ca39a3d78&redirect_uri=http%3A%2F%2F192.168.1.51%2Fcallback

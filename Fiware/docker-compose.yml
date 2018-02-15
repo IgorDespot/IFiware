@@ -12,7 +12,7 @@ services:
     expose:
       - "27017"
     ports:
-      - "27017:27017"
+      - "27018:27017"
     command: --smallfiles
     networks:
       - fiware
@@ -86,7 +86,7 @@ services:
       - CYGNUS_MYSQL_USER=root
       - CYGNUS_MYSQL_PASS=fiware
       - CYGNUS_LOG_LEVEL=INFO
-      - CYGNUS_MONGO_HOSTS=mongodb-cygnus:27018
+      - CYGNUS_MONGO_HOSTS=mongodb-cygnus:27017
       - CYGNUS_MONGO_USER=fiware
       - CYGNUS_MONGO_PASS=fiware
     networks:
@@ -130,9 +130,9 @@ services:
     hostname: mongodb-cygnus
     container_name: mongodb-cygnus
     expose: 
-      - "27018"
+      - "27017"
     ports:
-      - "27018:27018"
+      - "27017:27017"
     volumes:      
       - "./data/db/mongo:/data:rw"     
     environment:       

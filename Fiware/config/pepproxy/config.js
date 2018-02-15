@@ -11,19 +11,19 @@ config.https = {
     port: 443
 };
 
-config.account_host = 'http://localhost';
+config.account_host = 'http://192.168.1.51:8000';
 
-config.keystone_host = 'http://localhost';
+config.keystone_host = 'http://192.168.1.51';
 config.keystone_port = 5000;
 
-config.app_host = 'http://localhost';  //config do app REST (TODO: inserir via ENV?)
+config.app_host = 'http://192.168.1.51';  
 config.app_port = '1026';
 // Use true if the app server listens in https
 config.app_ssl = false;
 
 // Credentials obtained when registering PEP Proxy in Account Portal
-config.username = 'pep_proxy_d1c23379b6864687bed01abe7ca060d5';
-config.password = '66518e5df16b4491b64434ca052f87c5';
+config.username = 'pep_proxy_154de9ea954248d9904a2c66d52b5e0b';
+config.password = '7252ed4b0cce469cb70fb6d436e69798';
 
 // in seconds
 config.cache_time = 300;
