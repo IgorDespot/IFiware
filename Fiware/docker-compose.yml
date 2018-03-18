@@ -35,6 +35,10 @@ services:
     image: fiware/idm:latest
     hostname: keyrock
     container_name: keyrock
+    volumes:
+        - "./config/idm/keystone.db:/keystone/keystone.db:rw"
+        - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
+        - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
     expose:  
         - "5000"
         - "8000"
@@ -43,20 +47,22 @@ services:
         - "8000:8000"
     networks:
         - fiware
-         
-  pepproxy:
+
+  pepwilma:
     image: ging/fiware-pep-proxy
-    hostname: pepproxy
-    container_name: pepproxy
+    hostname: pepwilma
+    container_name: pepwilma
     volumes:
         - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
+    links:
+        - keyrock
+        - orion
+    volumes_from:
+        - keyrock
     expose:
         - "80"
     ports:
         - "80:80"
-    links:
-        - orion
-        - keyrock 
     networks:
         - fiware
 
@@ -68,9 +74,7 @@ services:
       - "./config/cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
       - "./config/cygnus/grouping_rules.conf:/opt/apache-flume/conf/grouping_rules.conf:rw"
     links:
-      - postgres-cygnus
       - mysql-cygnus
-      - mongodb-cygnus
     expose:
       - "5050"
       - "8081"
@@ -78,9 +82,6 @@ services:
       - "5050:5050"
       - "8081:8081"
     environment:
-      - CYGNUS_POSTGRES_USER=postgres
-      - CYGNUS_POSTGRES_DB=fiware
-      - CYGNUS_POSTGRES_PASSWORD=fiware
       - CYGNUS_MYSQL_HOST=mysql-cygnus
       - CYGNUS_MYSQL_PORT=3306
       - CYGNUS_MYSQL_USER=root
@@ -89,24 +90,6 @@ services:
       - CYGNUS_MONGO_HOSTS=mongodb-cygnus:27017
       - CYGNUS_MONGO_USER=fiware
       - CYGNUS_MONGO_PASS=fiware
-    networks:
-      - fiware
-
-  postgres-cygnus:
-    restart: always
-    image: postgres:9.5
-    hostname: postgres-cygnus
-    container_name: postgres-cygnus
-    expose:
-      - "5432"
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=fiware
-      - POSTGRES_PASSWORD=fiware
-    volumes:
-      - "./data/db/postgres:/var/lib/postgresql/data:rw"
     networks:
       - fiware
 
@@ -124,35 +107,3 @@ services:
       - "./data/db/mysql:/var/lib/mysql:rw"
     networks:
       - fiware
-
-  mongodb-cygnus:
-    image: mongo:3.4.7
-    hostname: mongodb-cygnus
-    container_name: mongodb-cygnus
-    expose: 
-      - "27017"
-    ports:
-      - "27017:27017"
-    volumes:      
-      - "./data/db/mongo:/data:rw"     
-    environment:       
-      - MONGO_INITDB_ROOT_USERNAME=fiware
-      - MONGO_INITDB_ROOT_PASSWORD=fiware
-    command: mongod --smallfiles
-    networks:
-      - fiware     
-
-  sth-comet:
-    image: telefonicaiot/fiware-sth-comet:2.2.0
-    hostname: sth-comet
-    container_name: sth-comet
-    volumes:
-      - ./config/sth/config.js:/opt/sth/config.js
-    links:
-      - mongodb-cygnus
-    expose:
-      - "8666"     
-    ports:
-      - "8666:8666"
-    networks:
-      - fiware  
