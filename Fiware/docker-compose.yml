@@ -1,10 +1,9 @@
 version: "2"
-
 networks:
   fiware:
     driver: bridge
-
 services:
+# Base de datos Orion
   mongodb:
     image: mongo:3.4.7
     hostname: mongodb
@@ -16,7 +15,7 @@ services:
     command: --smallfiles
     networks:
       - fiware
-
+# GE encargado de la publicación y suscripción
   orion:
     image: fiware/orion:latest
     hostname: orion
@@ -27,45 +26,12 @@ services:
       - "1026"
     ports:
       - "1026:1026"
+    volumes:
+      - "./data/db/mongo:/data/db:rw"
     command: -dbhost mongodb
     networks:
       - fiware
-
-  keyrock:
-    image: fiware/idm:latest
-    hostname: keyrock
-    container_name: keyrock
-    volumes:
-        - "./config/idm/keystone.db:/keystone/keystone.db:rw"
-        - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
-        - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
-    expose:  
-        - "5000"
-        - "8000"
-    ports:
-        - "5000:5000"
-        - "8000:8000"
-    networks:
-        - fiware
-
-  pepwilma:
-    image: ging/fiware-pep-proxy
-    hostname: pepwilma
-    container_name: pepwilma
-    volumes:
-        - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
-    links:
-        - keyrock
-        - orion
-    volumes_from:
-        - keyrock
-    expose:
-        - "80"
-    ports:
-        - "80:80"
-    networks:
-        - fiware
-
+# GE encargada de la persistencia de datos
   cygnus:
     image: fiware/cygnus-ngsi:latest
     hostname: cygnus
@@ -87,12 +53,9 @@ services:
       - CYGNUS_MYSQL_USER=root
       - CYGNUS_MYSQL_PASS=fiware
       - CYGNUS_LOG_LEVEL=INFO
-      - CYGNUS_MONGO_HOSTS=mongodb-cygnus:27017
-      - CYGNUS_MONGO_USER=fiware
-      - CYGNUS_MONGO_PASS=fiware
     networks:
       - fiware
-
+# Base de datos para historicos
   mysql-cygnus:
     image: mysql
     hostname: mysql-cygnus
@@ -107,3 +70,50 @@ services:
       - "./data/db/mysql:/var/lib/mysql:rw"
     networks:
       - fiware
+# GE de control de acceso 
+  authzforce:
+     image: fiware/authzforce-ce-server:release-5.4.1
+     hostname: authzforce
+     container_name: authzforce
+     expose:
+         - "8080" 
+     ports: 
+         - "8080:8080"
+# GE encargado de la administración de seguridad
+  keyrock:
+    image: fiware/idm:latest
+    hostname: keyrock
+    container_name: keyrock
+    volumes:
+        - "./config/idm/keystone.db:/keystone/keystone.db:rw"
+        - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
+        - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
+    links:
+        - orion
+    expose:  
+        - "5000"
+        - "8000"
+    ports:
+        - "5000:5000"
+        - "8000:8000"
+    networks:
+        - fiware
+# GE encargado del redireccionamiento
+  pepwilma:
+    image: ging/fiware-pep-proxy
+    hostname: pepwilma
+    container_name: pepwilma
+    volumes:
+        - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
+    links:
+        - keyrock
+        - orion
+        - authzforce
+    volumes_from:
+        - keyrock
+    expose:
+        - "80"
+    ports:
+        - "80:80"
+    networks:
+        - fiware

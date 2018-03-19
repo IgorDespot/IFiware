@@ -11,19 +11,19 @@ config.https = {
     port: 443
 };
 
-config.account_host = '127.0.0.1:8000'; //IDM instance
+config.account_host = 'http://keyrock:8000'; //IDM instance
 
-config.keystone_host = '127.0.0.1'; //ip from IDM keyrock instance
+config.keystone_host = 'keyrock'; //ip from IDM keyrock instance
 config.keystone_port = 5000;
 
-config.app_host = '127.0.0.1';   // Orion instance
-config.app_port = '1026';		// Orion Port
+config.app_host = 'orion';   // Orion instance
+config.app_port = '1026';    // Orion Port
 // Use true if the app server listens in https
 config.app_ssl = false;
 
 // Credentials obtained when registering PEP Proxy in Account Portal
-config.username = 'pep_proxy_b543f559d9c84ae89d43774b3351ea21'; //pepproxy obtained username 
-config.password = '34efe7cd02bd40fabfd84d41520d5f01';           //pepproxy obtained password
+config.username = ''; //pepproxy obtained username 
+config.password = '';           //pepproxy obtained password
 
 // in seconds
 config.cache_time = 300;
@@ -34,8 +34,8 @@ config.cache_time = 300;
 // you can use custom policy checks by including programatic scripts 
 // in policies folder. An script template is included there
 config.azf = {
-    enabled: false,     //TESTES: reativar
-    host: '127.0.0.1', //usar o nome do container (o --link cria a entrada no hosts)
+    enabled: true,     //TESTES: reativar
+    host: 'authzforce', //usar o nome do container (o --link cria a entrada no hosts)
     port: 8080,
     path: '/authzforce/domains/',
     custom_policy: undefined, // use undefined to default policy checks (HTTP verb + path).
