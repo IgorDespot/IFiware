@@ -88,8 +88,8 @@ services:
         - "./config/idm/keystone.db:/keystone/keystone.db:rw"
         - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
         - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
-    links:
-        - orion
+#    links:
+#        - orion
     expose:  
         - "5000"
         - "8000"
@@ -100,11 +100,12 @@ services:
         - fiware
 # GE encargado del redireccionamiento
   pepwilma:
-    image: ging/fiware-pep-proxy
+    image: ging/fiware-pep-proxy:latest
     hostname: pepwilma
     container_name: pepwilma
     volumes:
         - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
+        - "./config/pepproxy/idm.js:/opt/fiware-pep-proxy/lib/idm.js:rw"
     links:
         - keyrock
         - orion

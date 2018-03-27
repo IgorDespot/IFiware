@@ -22,8 +22,8 @@ config.app_port = '1026';    // Orion Port
 config.app_ssl = false;
 
 // Credentials obtained when registering PEP Proxy in Account Portal
-config.username = ''; //pepproxy obtained username 
-config.password = '';           //pepproxy obtained password
+config.username = 'pep_proxy_96a719f9241b44fbaa321781ef877293'; //pepproxy obtained username 
+config.password = '12083ef9a1d74f33a67d2cd22df3b522';           //pepproxy obtained password
 
 // in seconds
 config.cache_time = 300;
