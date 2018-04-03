@@ -22,8 +22,8 @@ config.app_port = '1026';    // Orion Port
 config.app_ssl = false;
 
 // Credentials obtained when registering PEP Proxy in Account Portal
-config.username = 'pep_proxy_96a719f9241b44fbaa321781ef877293'; //pepproxy obtained username 
-config.password = '12083ef9a1d74f33a67d2cd22df3b522';           //pepproxy obtained password
+config.username = 'pep_proxy_e559a839b5864561b052bfdceb7c3915'; //pepproxy obtained username 
+config.password = 'fc7192eaed954c6cb73b50e6dbe0250f';           //pepproxy obtained password
 
 // in seconds
 config.cache_time = 300;
@@ -34,12 +34,11 @@ config.cache_time = 300;
 // you can use custom policy checks by including programatic scripts 
 // in policies folder. An script template is included there
 config.azf = {
-    enabled: true,     //TESTES: reativar
-    host: 'authzforce', //usar o nome do container (o --link cria a entrada no hosts)
-    port: 8080,
-    path: '/authzforce/domains/',
-    custom_policy: undefined, // use undefined to default policy checks (HTTP verb + path).
-    protocol: 'http'
+    enabled: false,
+    protocol: 'https',
+    host: 'auth.lab.fiware.org',
+    port: 6019,
+    custom_policy: undefined // use undefined to default policy checks (HTTP verb + path).
 };
 
 // list of paths that will not check authentication/authorization
