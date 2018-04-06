@@ -1,0 +1,160 @@
+version: "2"
+networks:
+  fiware:
+    driver: bridge
+services:
+# Base de datos Orion
+  mongodb:
+    image: mongo:3.4.7
+    hostname: mongodb
+    container_name: mongodb
+    expose:
+      - "27017"
+    ports:
+      - "27018:27017"
+    volumes:      
+      - "./data/db/mongodb:/data:rw"
+    command: --smallfiles
+    networks:
+      - fiware
+# GE encargado de la publicación y suscripción
+  orion:
+    image: fiware/orion:latest
+    hostname: orion
+    container_name: orion
+    links: 
+      - mongodb
+    expose:
+      - "1026"
+    ports:
+      - "1026:1026"
+    command: -dbhost mongodb
+    networks:
+      - fiware
+# GE encargada de la persistencia de datos
+  cygnus:
+    image: fiware/cygnus-ngsi:latest
+    hostname: cygnus
+    container_name: cygnus
+    volumes:
+      - "./config/cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
+      - "./config/cygnus/grouping_rules.conf:/opt/apache-flume/conf/grouping_rules.conf:rw"
+    links:
+      - mysql-cygnus:mysql-cygnus
+      - mongodb-cygnus:mongodb-cygnus
+    expose:
+      - "5050"
+      - "8081"
+    ports:
+      - "5050:5050"
+      - "8081:8081"
+    environment:
+      - CYGNUS_MYSQL_HOST=mysql-cygnus
+      - CYGNUS_MYSQL_PORT=3306
+      - CYGNUS_MYSQL_USER=root
+      - CYGNUS_MYSQL_PASS=fiware
+      - CYGNUS_LOG_LEVEL=INFO
+      - CYGNUS_MONGO_HOSTS=mongodb-cygnus:27017
+      - CYGNUS_MONGO_USER=fiware
+      - CYGNUS_MONGO_PASS=fiware
+    networks:
+      - fiware
+# Base de datos para historicos
+  mysql-cygnus:
+    image: mysql
+    hostname: mysql-cygnus
+    container_name: mysql-cygnus 
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=fiware
+    volumes:
+      - "./data/db/mysql:/var/lib/mysql:rw"
+    networks:
+      - fiware
+# Base de datos para historicos
+  mongodb-cygnus:
+    image: mongo:3.4.7
+    hostname: mongodb-cygnus
+    container_name: mongodb-cygnus
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    volumes:      
+      - "./data/db/mongodb-cygnus:/data:rw"  
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=fiware
+      - MONGO_INITDB_ROOT_PASSWORD=fiware
+    command: mongod --smallfiles        
+    networks:
+      - fiware
+# GE encargado de la administración de seguridad
+  keyrock:
+    image: fiware/idm:latest
+    hostname: keyrock
+    container_name: keyrock
+    volumes:
+        - "./config/idm/keystone.db:/keystone/keystone.db:rw"
+        - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
+        - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
+    links:
+        - orion
+    expose:  
+        - "5000"
+        - "8000"
+    ports:
+        - "5000:5000"
+        - "8000:8000"
+    networks:
+        - fiware
+# GE encargado del redireccionamiento
+  pepwilma:
+    image: ging/fiware-pep-proxy:latest
+    hostname: pepwilma
+    container_name: pepwilma
+    volumes:
+        - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
+        - "./config/pepproxy/idm.js:/opt/fiware-pep-proxy/lib/idm.js:rw"
+        - "./config/pepproxy/azf.js:/opt/fiware-pep-proxy/lib/azf.js:rw"
+    links:
+        - keyrock
+        - orion
+        - authzforce
+    volumes_from:
+        - keyrock
+    expose:
+        - "80"
+    ports:
+        - "80:80"
+    networks:
+        - fiware
+#=========================================================
+#======================== TESTING ========================
+  authzforce:
+     image: fiware/authzforce-ce-server:release-5.4.1
+     hostname: authzforce
+     container_name: authzforce
+     expose:
+         - "8080" 
+     ports: 
+         - "8080:8080"
+     networks:
+        - fiware
+# GE gestor de historicos
+  sth-comet:
+    image: telefonicaiot/fiware-sth-comet
+    hostname: sth-comet
+    container_name: sth-comet
+    volumes:
+        - "./config/sth/config.js:/opt/sth/config.js:rw"
+    links:       
+        - mongodb-cygnus
+    expose:
+        - "8666"     
+    ports:       
+        - "8666:8666"
+    networks:
+        - fiware
