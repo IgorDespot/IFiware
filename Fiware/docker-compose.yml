@@ -40,6 +40,7 @@ services:
       - "./config/cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
       - "./config/cygnus/grouping_rules.conf:/opt/apache-flume/conf/grouping_rules.conf:rw"
     links:
+      - orion
       - mysql-cygnus
     expose:
       - "5050"
