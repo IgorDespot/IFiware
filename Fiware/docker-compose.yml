@@ -73,7 +73,7 @@ services:
       - fiware
 # GE encargado de la administración de seguridad
   keyrock:
-    image: fiware/idm:latest
+    image: fiware/idm:v5.4.0
     hostname: keyrock
     container_name: keyrock
     volumes:
