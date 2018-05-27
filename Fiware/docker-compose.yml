@@ -58,54 +58,28 @@ services:
       - fiware
 # Base de datos para historicos
   mysql-cygnus:
-    image: mysql
+    image: mysql:5.7.20
     hostname: mysql-cygnus
     container_name: mysql-cygnus 
     expose:
-      - "3306"
+      - "3366"
     ports:
-      - "3306:3306"
+      - "3366:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=fiware
     volumes:
       - "./data/db/mysql:/var/lib/mysql:rw"
     networks:
       - fiware
-# GE encargado de la administración de seguridad
-  keyrock:
-    image: fiware/idm:v5.4.0
-    hostname: keyrock
-    container_name: keyrock
-    volumes:
-        - "./config/idm/keystone.db:/keystone/keystone.db:rw"
-        - "./config/idm/local_settings.py:/horizon/openstack_dashboard/local/local_settings.py:rw"
-        - "./config/idm/keystone.conf:/keystone/etc/keystone.conf:rw"
-    links:
-        - orion
-    expose:  
-        - "5000"
-        - "8000"
-    ports:
-        - "5000:5000"
-        - "8000:8000"
-    networks:
-        - fiware
-# GE encargado del redireccionamiento
-  pepwilma:
-    image: ging/fiware-pep-proxy:latest
-    hostname: pepwilma
-    container_name: pepwilma
-    volumes:
-        - "./config/pepproxy/config.js:/opt/fiware-pep-proxy/config.js:rw"
-        - "./config/pepproxy/idm.js:/opt/fiware-pep-proxy/lib/idm.js:rw"
-    links:
-        - keyrock
-        - orion
-    volumes_from:
-        - keyrock
-    expose:
-        - "80"
-    ports:
-        - "80:80"
-    networks:
+#=========================================================
+#======================== TESTING ========================
+  authzforce:
+     image: fiware/authzforce-ce-server:release-5.4.1
+     hostname: authzforce
+     container_name: authzforce
+     expose:
+        - "8080" 
+     ports: 
+        - "8080:8080"
+     networks:
         - fiware

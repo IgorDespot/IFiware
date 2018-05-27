@@ -11,20 +11,26 @@ config.https = {
     port: 443
 };
 
-config.account_host = 'http://keyrock:8000'; //IDM instance
+config.idm = {
+	host: 'localhost',
+	port: 443,
+	ssl: true
+}
 
-config.keystone_host = 'keyrock'; //ip from IDM keyrock instance
-config.keystone_port = 5000;
+config.app = {
+	host: 'localhost',
+	port: '1026',
+	ssl: false // Use true if the app server listens in https
+}
 
-config.app_host = 'orion';   // Orion instance
-config.app_port = '1026';    // Orion Port
-// Use true if the app server listens in https
-config.app_ssl = false;
 
-// Credentials obtained when registering PEP Proxy in Account Portal
-config.username = 'pep_proxy_2827f4a642b241ea996e4240acbd2e0d'; //pepproxy obtained username 
-config.password = '19e5e83b5ea74f0a85855fd60fc3fa98';           //pepproxy obtained password
-
+// Credentials obtained when registering PEP Proxy in app_id in Account Portal run first IDM.deploy and set this
+config.pep = {
+        app_id:    '30f38b53-842b-4d7a-8dd3-0c54774b842e',
+        username:  'pep_proxy_9d0019c5-617f-4878-8fdc-aab6b3e67dc0',
+        password:  'pep_proxy_9640d95a-4dc9-4878-b4d2-f6b01786f767',
+        trusted_apps : []
+}
 // in seconds
 config.cache_time = 300;
 
@@ -34,19 +40,16 @@ config.cache_time = 300;
 // you can use custom policy checks by including programatic scripts 
 // in policies folder. An script template is included there
 config.azf = {
-    enabled: false,
-    protocol: 'https',
-    host: 'auth.lab.fiware.org',
-    port: 6019,
+	enabled: true,
+	protocol: 'http',
+    host: 'localhost',
+    port: 8080,
     custom_policy: undefined // use undefined to default policy checks (HTTP verb + path).
 };
 
 // list of paths that will not check authentication/authorization
 // example: ['/public/*', '/static/css/']
 config.public_paths = [];
-
-// options: oauth2/keystone
-config.tokens_engine = 'oauth2';
 
 config.magic_key = undefined;
 

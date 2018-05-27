@@ -5,4 +5,4 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 # Delete all images
 docker rmi $(docker images -q)
-sudo rm -r /home/rios/Documents/Fiware/data
+sudo rm -r /home/rios/Documents/fiware/data
