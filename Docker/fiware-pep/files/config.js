@@ -26,9 +26,9 @@ config.app = {
 
 // Credentials obtained when registering PEP Proxy in app_id in Account Portal run first IDM.deploy and set this
 config.pep = {
-        app_id:    '6e7f910f-e83b-4681-afc3-f75ac0398bfb',
-        username:  'pep_proxy_513bc5a6-68b2-4514-9e52-19a1d5264753',
-        password:  'pep_proxy_4aff8b21-41f6-4ae7-b1bc-463737818154',
+        app_id:    '05b69f39-b8da-4191-a2e0-7d2dc11987c0',
+        username:  'pep_proxy_a3bfdb58-8650-492e-ab19-ebae69ae94a4',
+        password:  'pep_proxy_9c23ae3c-720a-4fe8-991c-211e7c158708',
         trusted_apps : []
 }
 // in seconds

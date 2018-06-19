@@ -19,7 +19,7 @@ services:
       - fiware
 # GE encargado de la publicación y suscripción
   orion:
-    image: fiware/orion:latest
+    image: fiware/orion:1.14.0
     hostname: orion
     container_name: orion
     expose:
@@ -31,18 +31,15 @@ services:
       - fiware
 # GE encargada de la persistencia de datos
   cygnus:
-    image: fiware/cygnus-ngsi:latest
+    build: cygnus
     hostname: cygnus
     container_name: cygnus
-    volumes:
-      - "./cygnus/agent.conf:/opt/apache-flume/conf/agent.conf:rw"
-      - "./cygnus/grouping_rules.conf:/opt/apache-flume/conf/grouping_rules.conf:rw"
     expose:
       - "5050"
-      - "8081"
+      - "5080"
     ports:
       - "5050:5050"
-      - "8081:8081"
+      - "5080:5080"
     environment:
       - CYGNUS_MYSQL_HOST=mysql-idm-cygnus
       - CYGNUS_MYSQL_PORT=3306
@@ -97,8 +94,8 @@ services:
     hostname: fiware-pep
     container_name: fiware-pep
     expose:
-      - "80"
+      - "8585"
     ports:
-      - "80:80"
+      - "8585:80"
     networks:
       - fiware

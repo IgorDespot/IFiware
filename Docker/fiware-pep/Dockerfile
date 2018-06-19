@@ -9,7 +9,7 @@ RUN sudo apt-get update && \
 	sudo apt-get install make g++ software-properties-common python-software-properties -y && \
 	sudo add-apt-repository ppa:chris-lea/node.js -y && \
 	sudo apt-get update && \
-	sudo apt-get install nodejs git -y
+	sudo apt-get install nodejs git nano -y
 
 # Download latest version of the code and install npm dependencies
 RUN git clone https://github.com/ging/fiware-pep-proxy.git && \
