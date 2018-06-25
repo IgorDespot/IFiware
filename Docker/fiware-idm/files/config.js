@@ -1,6 +1,6 @@
 var config = {};
 
-config.host = 'http://localhost:3000';
+config.host = 'http://172.24.1.11:3000';
 config.port = 3000
 
 // HTTPS enable
@@ -41,7 +41,7 @@ config.api = {
 // Enable authzforce
 config.authzforce = {
 	enabled: true,
-	host: 'authzforce',
+	host: '172.24.1.10',
 	port: 8080
 }
 
@@ -49,7 +49,7 @@ var database_host = (process.env.DATABASE_HOST) ? process.env.DATABASE_HOST : 'l
 
 // Database info
 config.database = {
-    host: 'mysql-idm-cygnus',         // default: 'localhost' 
+    host: '172.24.1.9',         // default: 'localhost' 
     password: 'fiware',             // default: 'idm'
     username: 'root',            // default: 'root'
     database: 'idm',             // default: 'idm'

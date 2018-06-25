@@ -2,6 +2,10 @@ version: "2"
 networks:
   fiware:
     driver: bridge
+    ipam:
+     config:
+       - subnet: 172.24.1.0/24
+         gateway: 172.24.1.1
 services:
 # Base de datos Orion
   mongo:
@@ -16,7 +20,8 @@ services:
       - "./data/db/mongodb:/data:rw"
     command: --nojournal
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.6
 # GE encargado de la publicación y suscripción
   orion:
     image: fiware/orion:1.14.0
@@ -28,7 +33,8 @@ services:
       - "1026:1026"
     command: -dbhost mongo
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.7
 # GE encargada de la persistencia de datos
   cygnus:
     build: cygnus
@@ -41,13 +47,14 @@ services:
       - "5050:5050"
       - "5080:5080"
     environment:
-      - CYGNUS_MYSQL_HOST=mysql-idm-cygnus
+      - CYGNUS_MYSQL_HOST=172.24.1.9
       - CYGNUS_MYSQL_PORT=3306
       - CYGNUS_MYSQL_USER=root
       - CYGNUS_MYSQL_PASS=fiware
       - CYGNUS_LOG_LEVEL=INFO
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.8
 # base de datos para los historicos y la interfaz
   mysql-idm-cygnus:
     image: mysql:5.7.20
@@ -62,7 +69,8 @@ services:
     volumes:
       - "./data/db/mysql:/var/lib/mysql:rw"
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.9
 # habiitador de seguridad
   authzforce:
     image: fiware/authzforce-ce-server:release-5.4.1
@@ -73,7 +81,8 @@ services:
     ports: 
       - "8080:8080"
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.10
 # interfaz de configuración y seguridad
   fiware-idm:
     build: fiware-idm
@@ -86,16 +95,20 @@ services:
       - "3000:3000"
       - "443:443"
     environment:
-      - DATABASE_HOST=mysql-idm-cygnus
+      - DATABASE_HOST=172.24.1.9
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.11
+# proxy
   fiware-pep:
     build: fiware-pep
-    hostname: fiware-pep
+    hostname: fyware-pep
     container_name: fiware-pep
     expose:
       - "8585"
     ports:
       - "8585:80"
     networks:
-      - fiware
+      fiware:
+        ipv4_address: 172.24.1.12
+
