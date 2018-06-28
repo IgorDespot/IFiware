@@ -24,7 +24,7 @@ def get_access_token(idm_host, user, password):
     payload = "grant_type=password&username=" + user + "&password=" + password + "&client_id=" + main_app['app_id'] +\
               "&client_secret=" + main_app['app_secret']
     try:
-        response = requests.post(url=idm_host + '/oauth2/token', data=payload, headers=headers)
+        response = requests.post(url=idm_host + '/oauth2/token', verify=False, data=payload, headers=headers)
         if response.status_code in (201, 200):
             token = json.loads(response.text)['access_token']
             logging.info('TOKEN --- ' + token)
@@ -37,6 +37,7 @@ def get_access_token(idm_host, user, password):
 
 def get_all_entities(proxy, token):
     logging.debug('getting all ...')
+    # headers = {'X-Auth-token': token, 'Fiware-ServicePath': '/Nodes'}
     headers = {'X-Auth-token': token, 'Fiware-ServicePath': '/Nodes'}
     response = requests.get(url=proxy + '/v2/entities/', headers=headers)
     if response.status_code in (201, 200):
