@@ -170,18 +170,18 @@ def deploy_app(idm_host, user, password):
     token = get_token(idm_host, user, password)
     main_app['app_id'], main_app['app_secret'] = create_app(idm_host, token, name, description, uri, url)
     pep_id, pep_password = PEPproxy(idm_host, token, main_app['app_id'])
-    app = open('Fiware/dic/main_app.pckl', 'wb')
+    app = open('main_app.pckl', 'wb')
     pk.dump(main_app, app)
     app.close()
     user_id = {}
-    app = open('Fiware/dic/user_id.pckl', 'wb')
+    app = open('user_id.pckl', 'wb')
     user_id['freedom'] = create_user(idm_host, token, "freedom", "freedom@test.com", "freedom")
     user_id['App'] = create_user(idm_host, token, "App", "App@test.com", "App")
     user_id['Rios'] = create_user(idm_host, token, "Ríos", "rios@test.com", "blink182")
     pk.dump(user_id, app)
     app.close()
     permission_id = {}
-    app = open('Fiware/dic/permission_id.pckl', 'wb')
+    app = open('permission_id.pckl', 'wb')
     permission_id['get entities'] = create_permission(idm_host, token, main_app['app_id'], "get entities",
                                                       "GET", "v2/entities/")
     permission_id['publish entities'] = create_permission(idm_host, token, main_app['app_id'], "publish entities",
@@ -193,7 +193,7 @@ def deploy_app(idm_host, user, password):
     pk.dump(permission_id, app)
     app.close()
     role_id = {}
-    app = open('Fiware/dic/role_id.pckl', 'wb')
+    app = open('role_id.pckl', 'wb')
     role_id['freedom'] = create_role(idm_host, token, main_app['app_id'], "freedom")
     role_id['App'] = create_role(idm_host, token, main_app['app_id'], "App")
     role_id['Rios'] = create_role(idm_host, token, main_app['app_id'], "Rios")
