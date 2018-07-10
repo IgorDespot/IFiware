@@ -14,7 +14,7 @@ def tree():
 
 def get_access_token(idm_host, user, password):
     logging.debug('getting auth token...')
-    app = open('Fiware/dic/main_app.pckl', 'rb')
+    app = open('main_app.pckl', 'rb')
     main_app = pk.load(app)
     app.close()
     del app
